@@ -9,7 +9,7 @@ import java.util.List;
 /**
  *
  * Interfaz que define los métodos de acceso a datos de la clase Pokemon
- * @author
+ * @author Daniel Ocaña y Pablo Polo
  * @version 1.0
  * @date 24/04/2023
  *
