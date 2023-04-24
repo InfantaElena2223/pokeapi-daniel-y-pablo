@@ -9,7 +9,7 @@ import org.infantaelena.modelo.entidades.Pokemon;
  * Clase que se encarga de obtener los datos de la vista
  * y enviarlos al modelo para que los procese
  *
- * @author Pablo Polo y Daniel Ocaña
+ * @author Pablo Polo y Daniel Ocaña.
  * @version 1.0
  * @date 24/04/2023
  *
