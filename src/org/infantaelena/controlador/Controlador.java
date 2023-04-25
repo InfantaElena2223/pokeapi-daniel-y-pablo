@@ -1,8 +1,7 @@
 package org.infantaelena.controlador;
 
-import org.infantaelena.vista.Vista;
 import org.infantaelena.modelo.dao.PokemonDAOImp;
-import org.infantaelena.modelo.entidades.Pokemon;
+import org.infantaelena.vista.Vista;
 
 /**
  * Clase que se encarga de obtener los datos de la vista
@@ -31,7 +30,7 @@ public class Controlador {
             opcion = vista.mostrarMenu();
             switch (opcion) {
                 case 1:
-
+                    System.out.println();
                     break;
                 case 2:
 

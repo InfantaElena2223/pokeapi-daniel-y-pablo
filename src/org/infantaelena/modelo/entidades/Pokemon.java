@@ -8,4 +8,13 @@ package org.infantaelena.modelo.entidades;
  * @date 24/04/2023
  */
 public class Pokemon {
+
+    int vida;
+    int hola;
+    private String nombre;
+
+
+    public Pokemon() {
+
+    }
 }
