@@ -17,7 +17,6 @@ public class Pokemon {
     private int ataque;
     private int velocidad;
 
-
     public Pokemon() {
         this("", Clases.SIN_CLASE, 0, 0, 0, 0);
     }
