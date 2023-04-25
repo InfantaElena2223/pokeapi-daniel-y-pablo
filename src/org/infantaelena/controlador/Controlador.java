@@ -31,7 +31,7 @@ public class Controlador {
             opcion = vista.mostrarMenu();
             switch (opcion) {
                 case 1:
-
+                    System.out.println();
                     break;
                 case 2:
 
