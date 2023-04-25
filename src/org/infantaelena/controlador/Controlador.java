@@ -17,7 +17,7 @@ import org.infantaelena.modelo.entidades.Pokemon;
 public class Controlador {
 
     private Vista vista;
-    private PokemonDAOImp modelo;
+    private PokemonDAOImp modelo;;
 
     public Controlador() {
         vista = new Vista();
