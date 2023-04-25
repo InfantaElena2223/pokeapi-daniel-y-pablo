@@ -17,11 +17,36 @@ import org.infantaelena.modelo.entidades.Pokemon;
 public class Controlador {
 
     private Vista vista;
-    private PokemonDAOImp modelo;;
+    private PokemonDAOImp modelo;
+
 
     public Controlador() {
         vista = new Vista();
         modelo = new PokemonDAOImp();
+    }
+
+    public void programa() {
+        int opcion;
+        do {
+            opcion = vista.mostrarMenu();
+            switch (opcion) {
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+
+                    break;
+            }
+        } while (opcion != 6);
     }
 
 }
