@@ -10,9 +10,8 @@ package org.infantaelena.modelo.entidades;
 public class Pokemon {
 
     int vida;
-    int hola;
+    private int hola;
     private String nombre;
-
 
     public Pokemon() {
 
