@@ -8,12 +8,11 @@ import org.infantaelena.controlador.Controlador;
  * @date 24/04/2023
  */
 
-public class Main
-
-{
+public class Main {
 
     public static void main(String args[]) {
         new Controlador();
+
     }
 
 }

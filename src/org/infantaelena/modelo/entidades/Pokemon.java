@@ -10,7 +10,6 @@ package org.infantaelena.modelo.entidades;
 public class Pokemon {
     public enum Clases {FUEGO, TIERRA, AIRE, AGUA, SIN_CLASE}
 
-    ;
     private String nombre;
     private Clases clase;
     private int vida;

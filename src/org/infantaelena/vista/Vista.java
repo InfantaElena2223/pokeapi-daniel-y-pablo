@@ -1,5 +1,7 @@
 package org.infantaelena.vista;
 
+import org.infantaelena.modelo.entidades.Pokemon;
+
 import java.util.Scanner;
 
 /**
@@ -14,6 +16,7 @@ public class Vista {
     public Vista() {
 
     }
+
     static Scanner sc = new Scanner(System.in);
 
     public int mostrarMenu() {
