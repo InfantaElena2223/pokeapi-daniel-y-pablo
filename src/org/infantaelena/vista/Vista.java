@@ -37,6 +37,17 @@ public class Vista {
         return sc.nextInt();
     }
 
+    public Pokemon pedirPokemon(){
+        String nombreNuevoPokemon = pedirNombre();
+        Pokemon.Clases clase = pedirClase();
+        int vida = pedirVida();
+        int defensa = pedirDefensa();
+        int ataque = pedirAtaque();
+        int velocidad = pedirVelocidad();
+        Pokemon poke = new Pokemon(nombreNuevoPokemon,clase,vida,defensa,ataque,velocidad);
+        return poke;
+    }
+
     public String pedirNombre() {
         System.out.print("Introduce el nombre: ");
         String nombre = sc.nextLine();

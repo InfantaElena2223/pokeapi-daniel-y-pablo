@@ -1,6 +1,9 @@
 package org.infantaelena.controlador;
 
+import org.infantaelena.excepciones.PokemonNotFoundException;
+import org.infantaelena.excepciones.PokemonRepeatedException;
 import org.infantaelena.modelo.dao.PokemonDAOImp;
+import org.infantaelena.modelo.entidades.Pokemon;
 import org.infantaelena.vista.Vista;
 
 /**
@@ -30,8 +33,7 @@ public class Controlador {
             opcion = vista.mostrarMenu();
             switch (opcion) {
                 case 1:
-                    System.out.println();
-                    break;
+                    modelo.leerTodos();
                 case 2:
 
                     break;
@@ -39,10 +41,20 @@ public class Controlador {
 
                     break;
                 case 4:
-
+                    Pokemon pokeParaActualizar= vista.pedirPokemon();
+                    try {
+                        modelo.actualizar(pokeParaActualizar);
+                    } catch (PokemonNotFoundException e) {
+                        System.err.println("El pokemon no se encuentra");
+                    }
                     break;
                 case 5:
-
+                    Pokemon poke= vista.pedirPokemon();
+                    try {
+                        modelo.crear(poke);
+                    } catch (PokemonRepeatedException e) {
+                        System.err.println("El pokemon ya existe");
+                    }
                     break;
             }
         } while (opcion != 6);
