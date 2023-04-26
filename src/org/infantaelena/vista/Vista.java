@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class Vista {
     public Vista() {
-;
+        
     }
 
     static Scanner sc = new Scanner(System.in);
