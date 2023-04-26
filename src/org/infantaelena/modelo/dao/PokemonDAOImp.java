@@ -10,7 +10,7 @@ import java.util.List;
  *
  * Clase que implementa los métodos de acceso a datos de la clase Pokemon
  * Esta puede hacerse mediante un fichero CSV separado por puntos y coma o una base de datos
- * @author Pablo Polo Y Daniel Ocaña
+ * @author Pablo Polo, Marcos Manzano Y Daniel Ocaña
  * @version 1.0
  * @date 24/04/2023
  *
