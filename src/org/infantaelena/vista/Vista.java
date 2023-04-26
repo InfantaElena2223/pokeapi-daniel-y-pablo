@@ -20,15 +20,17 @@ public class Vista {
     static Scanner sc = new Scanner(System.in);
 
     public int mostrarMenu() {
-        System.out.println("Añadir Pokemon");
+        System.out.println("Elige una opción del 1 al 5 entre las siguientes");
 
-        System.out.println("Seleccionar un Pokemon");
+        System.out.println("1. Añadir Pokemon");
 
-        System.out.println("Actualizar un Pokemon");
+        System.out.println("2. Seleccionar un Pokemon");
 
-        System.out.println("Lista de todos los Pokemon");
+        System.out.println("3. Actualizar un Pokemon");
 
-        System.out.println("Eliminar un Pokemon");
+        System.out.println("4. Lista de todos los Pokemon");
+
+        System.out.println("5. Eliminar un Pokemon");
 
         System.out.println("Salir");
 
