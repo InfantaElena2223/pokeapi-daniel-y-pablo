@@ -35,11 +35,22 @@ public class Controlador {
                 case 1:
                     modelo.leerTodos();
                 case 2:
+                    String nombrePedidoPokemon = vista.pedirNombre();
 
+                    try {
+                        modelo.leerPorNombre(nombrePedidoPokemon);
+                    } catch (PokemonNotFoundException e) {
+                        System.err.println("No se encuentra el Pokemon");
+                    }
                     break;
                 case 3:
-
-                    break;
+                    String nombreParaEliminar = vista.pedirNombre();
+                    try {
+                        modelo.eliminarPorNombre(nombreParaEliminar);
+                    } catch (PokemonNotFoundException e) {
+                        System.err.println("No se encuentra el Pokemon");
+                    }
+                   break;
                 case 4:
                     Pokemon pokeParaActualizar= vista.pedirPokemon();
                     try {

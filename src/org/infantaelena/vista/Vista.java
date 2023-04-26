@@ -22,15 +22,15 @@ public class Vista {
     public int mostrarMenu() {
         System.out.println("Elige una opción del 1 al 5 entre las siguientes");
 
-        System.out.println("1. Añadir Pokemon");
+        System.out.println("1. Lista de todos los Pokemon");
 
         System.out.println("2. Seleccionar un Pokemon");
 
-        System.out.println("3. Actualizar un Pokemon");
+        System.out.println("3. Eliminar un Pokemon");
 
-        System.out.println("4. Lista de todos los Pokemon");
+        System.out.println("4. Actualizar los Pokemon");
 
-        System.out.println("5. Eliminar un Pokemon");
+        System.out.println("5. Añadir un Pokemon");
 
         System.out.println("Salir");
 
