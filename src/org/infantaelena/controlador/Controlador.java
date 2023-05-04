@@ -32,9 +32,9 @@ public class Controlador {
         do {
             opcion = vista.mostrarMenu();
             switch (opcion) {
-                case 1:
+                case 1:/*Filtrar por tipo, */
                     modelo.leerTodos();
-                case 2:
+                case 2: /*Ver los detalles en consola, preguntar si quiere cambiar los datos*/
                     String nombrePedidoPokemon = vista.pedirNombre();
 
                     try {
@@ -43,7 +43,7 @@ public class Controlador {
                         System.err.println("No se encuentra el Pokemon");
                     }
                     break;
-                case 3:
+                case 3:/*Confirmación antes de borrar*/
                     String nombreParaEliminar = vista.pedirNombre();
                     try {
                         modelo.eliminarPorNombre(nombreParaEliminar);
@@ -51,7 +51,7 @@ public class Controlador {
                         System.err.println("No se encuentra el Pokemon");
                     }
                    break;
-                case 4:
+                case 4: /*Cargar lista desde un CSV existente*/
                     Pokemon pokeParaActualizar= vista.pedirPokemon();
                     try {
                         modelo.actualizar(pokeParaActualizar);
