@@ -25,6 +25,7 @@ public class Controlador {
     public Controlador() {
         vista = new Vista();
         modelo = new PokemonDAOImp();
+        programa();
     }
 
     public void programa() {
@@ -34,6 +35,7 @@ public class Controlador {
             switch (opcion) {
                 case 1:/*Filtrar por tipo, */
                     modelo.leerTodos();
+                    break;
                 case 2: /*Ver los detalles en consola, preguntar si quiere cambiar los datos*/
                     String nombrePedidoPokemon = vista.pedirNombre();
 

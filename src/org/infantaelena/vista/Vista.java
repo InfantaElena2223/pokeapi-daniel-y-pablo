@@ -2,6 +2,7 @@ package org.infantaelena.vista;
 
 import org.infantaelena.modelo.entidades.Pokemon;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -14,13 +15,13 @@ import java.util.Scanner;
  */
 public class Vista {
     public Vista() {
-        
+
     }
 
     static Scanner sc = new Scanner(System.in);
 
     public int mostrarMenu() {
-        System.out.println("Elige una opción del 1 al 5 entre las siguientes");
+        System.out.println("Elige una opción del 1 al 6 entre las siguientes");
 
         System.out.println("1. Lista de todos los Pokemon");
 
@@ -32,25 +33,31 @@ public class Vista {
 
         System.out.println("5. Añadir un Pokemon");
 
-        System.out.println("Salir");
-
-        return sc.nextInt();
+        System.out.println("6. Salir");
+        int opcion = sc.nextInt();
+        sc.nextLine();
+        return opcion;
     }
 
-    public Pokemon pedirPokemon(){
+    public Pokemon pedirPokemon() {
         String nombreNuevoPokemon = pedirNombre();
         Pokemon.Clases clase = pedirClase();
         int vida = pedirVida();
         int defensa = pedirDefensa();
         int ataque = pedirAtaque();
         int velocidad = pedirVelocidad();
-        Pokemon poke = new Pokemon(nombreNuevoPokemon,clase,vida,defensa,ataque,velocidad);
+        Pokemon poke = new Pokemon(nombreNuevoPokemon, clase, vida, defensa, ataque, velocidad);
         return poke;
     }
 
     public String pedirNombre() {
         System.out.print("Introduce el nombre: ");
-        String nombre = sc.nextLine();
+        String nombre;
+        do{
+            nombre = sc.nextLine();
+
+        }while (nombre.equals("\n"));
+
         return nombre;
     }
 
@@ -83,9 +90,9 @@ public class Vista {
         return vida;
     }
 
-    public int pedirDefensa() {
-        System.out.print("Introduce la Defensa");
-        int defensa = sc.nextInt();
+    public int pedirDefensa(){
+        System.out.print("Introduce la Defensa: ");
+        int defensa=-1;
         do {
             if (defensa < 0 || defensa > 50) {
                 System.err.println("La defensa no es válida");
@@ -95,9 +102,9 @@ public class Vista {
         return defensa;
     }
 
-    public int pedirAtaque() {
-        System.out.print("Introduce el Ataque");
-        int ataque = sc.nextInt();
+    public int pedirAtaque(){
+        System.out.print("Introduce el Ataque: ");
+        int ataque = -1;
         do {
             if (ataque < 0 || ataque > 50) {
                 System.err.println("La ataque no es válida");
@@ -108,8 +115,8 @@ public class Vista {
     }
 
     public int pedirVelocidad() {
-        System.out.print("Introduce la velocidad");
-        int velocidad = sc.nextInt();
+        System.out.print("Introduce la velocidad: ");
+        int velocidad = -1;
         do {
             if (velocidad < 0 || velocidad > 50) {
                 System.err.println("La velocidad no es válida");

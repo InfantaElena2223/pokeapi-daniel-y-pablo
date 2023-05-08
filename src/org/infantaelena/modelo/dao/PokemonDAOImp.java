@@ -19,16 +19,18 @@ public class PokemonDAOImp implements PokemonDAO{
 
     @Override
     public void crear(Pokemon pokemon) throws PokemonRepeatedException {
-
+        System.out.println("creando");
     }
 
     @Override
     public Pokemon leerPorNombre(String nombre) throws PokemonNotFoundException {
+        System.out.println("leyendo por nombre");
         return null;
     }
 
     @Override
     public List<Pokemon> leerTodos() {
+        System.out.println("leyendo todos");
         return null;
     }
 
@@ -39,6 +41,6 @@ public class PokemonDAOImp implements PokemonDAO{
 
     @Override
     public void eliminarPorNombre(String nombre) throws PokemonNotFoundException {
-
+        System.out.println("eliminando por nombre");
     }
 }
