@@ -29,9 +29,9 @@ public class Vista {
 
         System.out.println("3. Eliminar un Pokemon");
 
-        System.out.println("4. Actualizar los Pokemon");
+        System.out.println("4. Actualizar los Pokemon");/*Actualizar desde el CSV pokemon ya añadido*/
 
-        System.out.println("5. Añadir un Pokemon");
+        System.out.println("5. Añadir un Pokemon");/*Añadir al CSV*/
 
         System.out.println("6. Salir");
         int opcion = sc.nextInt();
@@ -78,15 +78,22 @@ public class Vista {
 
     }
 
-    public int pedirVida() {
-        System.out.print("Introduce la vida");
-        int vida = sc.nextInt();
+    public int pedirVida(){
+        System.out.print("Introduce la vida: ");
+        int vida = -1;
         do {
-            if (vida <= 0 || vida > 50) {
+            try {
+                vida = sc.nextInt();
+                if (vida < 0 || vida > 50) {
+                    System.err.println("La vida no es válida");
+                    System.out.println("Introducela de nuevo: ");
+                }
+            } catch (InputMismatchException e) {
                 System.err.println("La vida no es válida");
-                System.out.print("Introducela de nuevo");
+                System.out.println("Introducela de nuevo: ");
+                sc.nextLine();
             }
-        } while (vida <= 0 || vida > 50);
+        } while (vida < 0 || vida > 50);
         return vida;
     }
 
@@ -94,9 +101,16 @@ public class Vista {
         System.out.print("Introduce la Defensa: ");
         int defensa=-1;
         do {
-            if (defensa < 0 || defensa > 50) {
+            try{
+                 defensa = sc.nextInt();
+                if (defensa < 0 || defensa > 50) {
+                    System.err.println("La defensa no es válida");
+                    System.out.println("Introducela de nuevo: ");
+                }
+            }catch (InputMismatchException e){
                 System.err.println("La defensa no es válida");
-                System.out.print("Introducela de nuevo");
+                System.out.println("Introducela de nuevo: ");
+                sc.nextLine();
             }
         } while (defensa < 0 || defensa > 50);
         return defensa;
@@ -106,9 +120,16 @@ public class Vista {
         System.out.print("Introduce el Ataque: ");
         int ataque = -1;
         do {
-            if (ataque < 0 || ataque > 50) {
-                System.err.println("La ataque no es válida");
-                System.out.print("Introducela de nuevo");
+            try {
+                ataque = sc.nextInt();
+                if (ataque < 0 || ataque > 50) {
+                    System.err.println("La ataque no es válida");
+                    System.out.println("Introducela de nuevo: ");
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("El ataque no es válido");
+                System.out.println("Introducela de nuevo: ");
+                sc.nextLine();
             }
         } while (ataque < 0 || ataque > 50);
         return ataque;
@@ -118,9 +139,16 @@ public class Vista {
         System.out.print("Introduce la velocidad: ");
         int velocidad = -1;
         do {
-            if (velocidad < 0 || velocidad > 50) {
+            try {
+                velocidad = sc.nextInt();
+                if (velocidad < 0 || velocidad > 50) {
+                    System.err.println("La velocidad no es válida");
+                    System.out.println("Introducela de nuevo: ");
+                }
+            } catch (InputMismatchException e) {
                 System.err.println("La velocidad no es válida");
-                System.out.print("Introducela de nuevo");
+                System.out.println("Introducela de nuevo: ");
+                sc.nextLine();
             }
         } while (velocidad < 0 || velocidad > 50);
         System.out.println();
