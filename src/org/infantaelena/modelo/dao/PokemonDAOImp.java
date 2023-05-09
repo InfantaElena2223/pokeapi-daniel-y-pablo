@@ -4,6 +4,7 @@ import org.infantaelena.excepciones.PokemonNotFoundException;
 import org.infantaelena.excepciones.PokemonRepeatedException;
 import org.infantaelena.modelo.entidades.Pokemon;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.List;
 
 /**
@@ -36,6 +37,8 @@ public class PokemonDAOImp implements PokemonDAO{
 
     @Override
     public void actualizar(Pokemon pokemon) throws PokemonNotFoundException {
+        System.out.println("Actualizando");
+        System.out.println("heyty");
 
     }
 
