@@ -83,7 +83,7 @@ public class Main {
                 System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa+ "\t" + ataque+ "\t" + velocidad);
             }*/
 
-            // Cerrar la conexión a la base de datos*/
+             Cerrar la conexión a la base de datos
             statement.close();
             connection.close();
         } catch (Exception e) {
