@@ -1,11 +1,6 @@
 package org.infantaelena;
 
-import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import org.infantaelena.controlador.Controlador;
 
 /**
  * @author Daniel Ocaña y Pablo Polo
@@ -18,10 +13,10 @@ public class Main {
 
 
     public static void main(String args[]) {
-        /*  new Controlador();*/
+          new Controlador();
 
 
-        Connection connection = null;
+      /*  Connection connection = null;
         Statement statement = null;
         try {
             Class.forName("org.h2.Driver");
@@ -48,7 +43,7 @@ public class Main {
                 System.err.println("El pokémon ya existe");
             }
 
-          /*  String insert2 = "INSERT INTO pokeapi (nombre, edad, email) VALUES ('María', 30, 'maria@hotmail.com');";
+          *//*  String insert2 = "INSERT INTO pokeapi (nombre, edad, email) VALUES ('María', 30, 'maria@hotmail.com');";
             statement.executeUpdate(insert2);
             String insert3 = "INSERT INTO pokeapi (nombre, edad) VALUES ('Pedro', 40);";
             statement.executeUpdate(insert3);
@@ -59,7 +54,7 @@ public class Main {
 
             // Borrar una fila
             String delete = "DELETE FROM pokeapi WHERE nombre = 'María';";
-            statement.executeUpdate(delete);*/
+            statement.executeUpdate(delete);*//*
             // Imprimir todo el contenido de la tabla
             String selectAll = "SELECT * FROM pokeapi;";
 
@@ -73,7 +68,7 @@ public class Main {
                 int velocidad = resultSet.getInt("velocidad");
                 System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa+ "\t" + ataque+ "\t" + velocidad);
             }
-         /*   while (resultSet.next()) {
+         *//*   while (resultSet.next()) {
                 String nombre = resultSet.getString("nombre");
                 String clase = resultSet.getString("clase");
                 int vida = resultSet.getInt("vida");
@@ -81,14 +76,14 @@ public class Main {
                 int ataque = resultSet.getInt("ataque");
                 int velocidad = resultSet.getInt("velocidad");
                 System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa+ "\t" + ataque+ "\t" + velocidad);
-            }*/
+            }*//*
 
              Cerrar la conexión a la base de datos
             statement.close();
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
 
 

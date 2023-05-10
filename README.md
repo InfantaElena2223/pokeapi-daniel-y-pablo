@@ -41,7 +41,7 @@ El patrón de diseño MVC (Modelo Vista Controlador) es una forma de organizar e
 
 Todas las clases estáran en el paquete org.madrid
 
-### org.infantaelena.modelo.entidades.Pokemon.java
+### entidades.modelo.org.infantaelena.Pokemon.java
 En el paquete org.infantaelena.modelo.entidades está la clase Pokemon con todos los datos necesarios para guardar un pokemon (nombre, clase, características…)
 
 ### org.infantaelena.modelo.DAOPokemonDAO.java
@@ -50,7 +50,7 @@ En el paquete org.infantaelena.modelo.DAO debe utilizarse obligatoriamente la si
 ### package org.infantaelena.modelo.DAO;
 
 ```
-import org.infantaelena.modelo.entidades.Pokemon;
+import entidades.modelo.org.infantaelena.Pokemon;
 
 import java.util.List;
 
@@ -83,13 +83,13 @@ public interface PokemonDAO {
 ###  org.infantaelena.modelo.DAO.PokemonDAOImp.java
 Implementación de la interfaz anterior mediante ficheros csv separados por punto y coma o una base de datos SQL.
 
-### org.infantaelena.excepciones.PokemonRepeatedException.java
+### excepciones.org.infantaelena.PokemonRepeatedException.java
 Excepción personalizada que se produce cuándo se intenta añadir un pokemon repetido. Esta debe ser tratada por el Controlador con un try catch.
 
-### org.infantaelena.excepciones.PokemonNotFoundException.java
+### excepciones.org.infantaelena.PokemonNotFoundException.java
 Excepción personalizada que que produce cuándo no se encuentra un pokemon para buscar, actualizar o borrar. Esta debe ser tratada por el Controlador con un try catch.
 
-### org.infantaelena.vista.Vista.java
+### vista.org.infantaelena.Vista.java
 Clase con la vista que puede ser una interfaz gráfica o un menú de consola de texto. Debe ser independiente del modelo y del controlador y mostrar las siguientes opciones:
 
 - Listar todos los Pokemones 
@@ -98,15 +98,15 @@ Clase con la vista que puede ser una interfaz gráfica o un menú de consola de 
 - Actualizar Poemon seleccionado.
 - Añadir Nuevo Pokemon
 
-### org.infantaelena.controlador.Controlador.java
+### controlador.org.infantaelena.Controlador.java
 Clase que controla la vista (mediante interfaz gráfica o lecturas de scanner) y el modelo para la persistencia de la aplicación. 
 Esta clase no debe implementar ningún elemento gráfico o usar Scanner, todos los datos se mostrarán o se pedirán a través de la vista.
 ```
 package madrid.org.controlador;
 
-import org.infantaelena.vista.Vista;
-import org.infantaelena.modelo.dao.PokemonDAOImp;
-import org.infantaelena.modelo.entidades.Pokemon;
+import vista.org.infantaelena.Vista;
+import dao.modelo.org.infantaelena.PokemonDAOImp;
+import entidades.modelo.org.infantaelena.Pokemon;
 
 public class Controlador{
 
@@ -128,7 +128,7 @@ Clase principal que instancia la clase controlador.
 ```
 package madrid.org;
 
-import org.infantaelena.controlador.Controlador;
+import controlador.org.infantaelena.Controlador;
 
 
 public class Main

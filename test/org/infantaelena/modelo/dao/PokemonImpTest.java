@@ -1,11 +1,13 @@
 package org.infantaelena.modelo.dao;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.infantaelena.controlador.Controlador;
+import org.infantaelena.vista.Vista;
 
 class PokemonImpTest {
 
     @org.junit.jupiter.api.Test
     void crear() {
+
     }
 
     @org.junit.jupiter.api.Test
