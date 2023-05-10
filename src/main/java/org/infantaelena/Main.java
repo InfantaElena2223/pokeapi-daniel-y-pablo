@@ -1,5 +1,7 @@
 package org.infantaelena;
 
+import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -37,15 +39,15 @@ public class Main {
                     + ");";
 
             statement.execute(createTableSQL);
-            String selectAll = "SELECT * FROM pokeapi;";
 
+            try {
+                // Insertar varias filas
+                String insert1 = "INSERT INTO pokeapi (nombre,clase,vida,defensa,ataque,velocidad) VALUES ('Pikachu','FUEGO',0,0,0,0);";
+                statement.executeUpdate(insert1);
+            } catch (JdbcSQLIntegrityConstraintViolationException e) {
+                System.err.println("El pokémon ya existe");
+            }
 
-            ResultSet resultSet = statement.executeQuery(selectAll);
-            // Insertar varias filas
-            String insert1 = "INSERT INTO pokeapi (nombre,clase,vida,defensa,ataque,velocidad) VALUES ('Pikachu','FUEGO',0,0,0,0);";
-            System.out.println(insert1);
-            System.out.println();
-            statement.executeUpdate(insert1);
           /*  String insert2 = "INSERT INTO pokeapi (nombre, edad, email) VALUES ('María', 30, 'maria@hotmail.com');";
             statement.executeUpdate(insert2);
             String insert3 = "INSERT INTO pokeapi (nombre, edad) VALUES ('Pedro', 40);";
@@ -59,7 +61,9 @@ public class Main {
             String delete = "DELETE FROM pokeapi WHERE nombre = 'María';";
             statement.executeUpdate(delete);*/
             // Imprimir todo el contenido de la tabla
-            
+            String selectAll = "SELECT * FROM pokeapi;";
+
+            ResultSet resultSet = statement.executeQuery(selectAll);
             while (resultSet.next()) {
                 String nombre = resultSet.getString("nombre");
                 String clase = resultSet.getString("clase");
@@ -69,6 +73,15 @@ public class Main {
                 int velocidad = resultSet.getInt("velocidad");
                 System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa+ "\t" + ataque+ "\t" + velocidad);
             }
+         /*   while (resultSet.next()) {
+                String nombre = resultSet.getString("nombre");
+                String clase = resultSet.getString("clase");
+                int vida = resultSet.getInt("vida");
+                int defensa = resultSet.getInt("defensa");
+                int ataque = resultSet.getInt("ataque");
+                int velocidad = resultSet.getInt("velocidad");
+                System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa+ "\t" + ataque+ "\t" + velocidad);
+            }*/
 
             // Cerrar la conexión a la base de datos*/
             statement.close();
