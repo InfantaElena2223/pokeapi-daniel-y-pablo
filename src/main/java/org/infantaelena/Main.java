@@ -1,8 +1,9 @@
 package org.infantaelena;
 
-import org.infantaelena.controlador.Controlador;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  * @author Daniel Ocaña y Pablo Polo
@@ -15,60 +16,66 @@ public class Main {
 
 
     public static void main(String args[]) {
-        new Controlador();
+        /*  new Controlador();*/
 
 
-/*         Connection connection = null;
-    Statement statement = null;
-    try {
-      Class.forName("org.h2.Driver");
-      connection = DriverManager.getConnection("jdbc:h2:./data/pokeapi", "sa", "");
-      statement = connection.createStatement();
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            Class.forName("org.h2.Driver");
+            connection = DriverManager.getConnection("jdbc:h2:./data/pokeapi", "sa", "");
+            statement = connection.createStatement();
 
-      // Crear tabla
-      String createTableSQL = "CREATE TABLE IF NOT EXISTS pokeapi (\n"
-          + " id INTEGER PRIMARY KEY AUTO_INCREMENT,\n"
-          + " nombre VARCHAR(255) NOT NULL,\n"
-          + " edad INTEGER,\n"
-          + " email VARCHAR(255)\n"
-          + ");";
-      statement.execute(createTableSQL);
+            // Crear tabla
+            String createTableSQL = "CREATE TABLE IF NOT EXISTS pokeapi (\n"
+                    + " nombre VARCHAR(30) PRIMARY KEY,\n"
+                    + " clase VARCHAR(20) NOT NULL,\n"
+                    + " vida INT,\n"
+                    + " defensa INT,\n"
+                    + " ataque INT,\n"
+                    + " velocidad INT\n"
+                    + ");";
 
-      // Insertar varias filas
-      String insert1 = "INSERT INTO pokeapi (nombre, edad, email) VALUES ('Juan', 25, 'juan@gmail.com');";
-      statement.executeUpdate(insert1);
-      String insert2 = "INSERT INTO pokeapi (nombre, edad, email) VALUES ('María', 30, 'maria@hotmail.com');";
-      statement.executeUpdate(insert2);
-      String insert3 = "INSERT INTO pokeapi (nombre, edad) VALUES ('Pedro', 40);";
-      statement.executeUpdate(insert3);
+            statement.execute(createTableSQL);
+            String selectAll = "SELECT * FROM pokeapi;";
 
-      // Actualizar una fila
-      String update = "UPDATE pokeapi SET email = 'juan@yahoo.com' WHERE nombre = 'Juan';";
-      statement.executeUpdate(update);
 
-      // Borrar una fila
-      String delete = "DELETE FROM pokeapi WHERE nombre = 'María';";
-      statement.executeUpdate(delete);
+            ResultSet resultSet = statement.executeQuery(selectAll);
+            // Insertar varias filas
+            String insert1 = "INSERT INTO pokeapi (nombre,clase,vida,defensa,ataque,velocidad) VALUES ('Pikachu','FUEGO',0,0,0,0);";
+            System.out.println(insert1);
+            System.out.println();
+            statement.executeUpdate(insert1);
+          /*  String insert2 = "INSERT INTO pokeapi (nombre, edad, email) VALUES ('María', 30, 'maria@hotmail.com');";
+            statement.executeUpdate(insert2);
+            String insert3 = "INSERT INTO pokeapi (nombre, edad) VALUES ('Pedro', 40);";
+            statement.executeUpdate(insert3);
 
-      // Imprimir todo el contenido de la tabla
-      String selectAll = "SELECT * FROM pokeapi;";
+            // Actualizar una fila
+            String update = "UPDATE pokeapi SET email = 'juan@yahoo.com' WHERE nombre = 'Juan';";
+            statement.executeUpdate(update);
 
-      ResultSet resultSet = statement.executeQuery(selectAll);
+            // Borrar una fila
+            String delete = "DELETE FROM pokeapi WHERE nombre = 'María';";
+            statement.executeUpdate(delete);*/
+            // Imprimir todo el contenido de la tabla
+            
+            while (resultSet.next()) {
+                String nombre = resultSet.getString("nombre");
+                String clase = resultSet.getString("clase");
+                int vida = resultSet.getInt("vida");
+                int defensa = resultSet.getInt("defensa");
+                int ataque = resultSet.getInt("ataque");
+                int velocidad = resultSet.getInt("velocidad");
+                System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa+ "\t" + ataque+ "\t" + velocidad);
+            }
 
-      while (resultSet.next()) {
-        int id = resultSet.getInt("id");
-        String nombre = resultSet.getString("nombre");
-        int edad = resultSet.getInt("edad");
-        String email = resultSet.getString("email");
-        System.out.println(id + "\t" + nombre + "\t" + edad + "\t" + email);
-      }
-
-      // Cerrar la conexión a la base de datos
-      statement.close();
-      connection.close();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }*/
+            // Cerrar la conexión a la base de datos*/
+            statement.close();
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
 
