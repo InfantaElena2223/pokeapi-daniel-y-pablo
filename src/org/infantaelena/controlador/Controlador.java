@@ -174,7 +174,7 @@ public class Controlador {
         int velocidad = -1;
         do {
             try {
-                velocidad = vista.pedirVida();
+                velocidad = vista.pedirVelocidad();
                 if (velocidad < 0 || velocidad > 50) {
                     vista.imprimirError();
                 }
