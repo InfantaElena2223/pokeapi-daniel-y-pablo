@@ -39,7 +39,7 @@ public class Vista {
         return opcion;
     }
 
-    public Pokemon pedirPokemon() {
+    /*public Pokemon pedirPokemon() {
         String nombreNuevoPokemon = pedirNombre();
         Pokemon.Clases clase = pedirClase();
         int vida = pedirVida();
@@ -48,7 +48,7 @@ public class Vista {
         int velocidad = pedirVelocidad();
         Pokemon poke = new Pokemon(nombreNuevoPokemon, clase, vida, defensa, ataque, velocidad);
         return poke;
-    }
+    }*/
 
     public String pedirNombre() {
         System.out.print("Introduce el nombre: ");
@@ -75,7 +75,6 @@ public class Vista {
             pedirClase();
         }
         return clase;
-
     }
 
     public int pedirVida(){

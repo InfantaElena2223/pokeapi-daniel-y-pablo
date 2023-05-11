@@ -6,6 +6,8 @@ import org.infantaelena.modelo.dao.PokemonDAOImp;
 import org.infantaelena.modelo.entidades.Pokemon;
 import org.infantaelena.vista.Vista;
 
+import java.util.InputMismatchException;
+
 /**
  * Clase que se encarga de obtener los datos de la vista
  * y enviarlos al modelo para que los procese
