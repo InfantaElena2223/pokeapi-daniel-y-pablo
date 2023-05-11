@@ -88,11 +88,11 @@ public class Controlador {
     public Pokemon pedirPokemon() {
 
         String nombreNuevoPokemon = pedirNombre();
-        Pokemon.Clases clase = vista.pedirClase();
-        int vida = vista.pedirVida();
-        int defensa = vista.pedirDefensa();
-        int ataque = vista.pedirAtaque();
-        int velocidad = vista.pedirVelocidad();
+        Pokemon.Clases clase = pedirClase();
+        int vida = pedirVida();
+        int defensa = pedirDefensa();
+        int ataque = pedirAtaque();
+        int velocidad = pedirVelocidad();
         Pokemon poke = new Pokemon(nombreNuevoPokemon, clase, vida, defensa, ataque, velocidad);
         return poke;
     }
@@ -142,7 +142,7 @@ public class Controlador {
         int ataque = -1;
         do {
             try {
-                ataque = vista.pedirVida();
+                ataque = vista.pedirAtaque();
                 if (ataque < 0 || ataque > 50) {
                     vista.imprimirError();
                 }
@@ -158,7 +158,7 @@ public class Controlador {
         int defensa = -1;
         do {
             try {
-                defensa = vista.pedirVida();
+                defensa = vista.pedirDefensa();
                 if (defensa < 0 || defensa > 50) {
                     vista.imprimirError();
                 }
