@@ -14,8 +14,6 @@ public class Main {
 
     public static void main(String args[]) {
           new Controlador();
-
-
       /*  Connection connection = null;
         Statement statement = null;
         try {

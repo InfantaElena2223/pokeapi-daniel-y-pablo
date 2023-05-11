@@ -53,31 +53,27 @@ public class Vista {
     public String pedirNombre() {
         System.out.print("Introduce el nombre: ");
         String nombre;
-        do{
-            nombre = sc.nextLine();
 
-        }while (nombre.equals("\n"));
+        nombre = sc.nextLine();
+
 
         return nombre;
     }
 
-    public Pokemon.Clases pedirClase() {
+    public Pokemon.Clases pedirClase() throws IllegalArgumentException {
 
-        Pokemon.Clases clase = Pokemon.Clases.SIN_CLASE;
+        Pokemon.Clases clase;
         System.out.println("Introduce la clase");
         System.out.print("Opciones disponibles [SIN_CLASE,FUEGO, TIERRA, AIRE, AGUA]: ");
 
         String textoClase = sc.nextLine().toUpperCase();
-        try {
-            clase = Pokemon.Clases.valueOf(textoClase);
-        } catch (IllegalArgumentException e) {
-            System.err.println("No se ha encontrado la clase prueba otra vez");
-            pedirClase();
-        }
+
+        clase = Pokemon.Clases.valueOf(textoClase);
+
         return clase;
     }
 
-    public int pedirVida(){
+    public int pedirVida()  throws InputMismatchException{
         System.out.print("Introduce la vida: ");
         int vida = -1;
         do {
@@ -96,7 +92,7 @@ public class Vista {
         return vida;
     }
 
-    public int pedirDefensa(){
+    public int pedirDefensa() throws InputMismatchException{
         System.out.print("Introduce la Defensa: ");
         int defensa=-1;
         do {
@@ -115,7 +111,7 @@ public class Vista {
         return defensa;
     }
 
-    public int pedirAtaque(){
+    public int pedirAtaque() throws InputMismatchException{
         System.out.print("Introduce el Ataque: ");
         int ataque = -1;
         do {
@@ -134,7 +130,7 @@ public class Vista {
         return ataque;
     }
 
-    public int pedirVelocidad() {
+    public int pedirVelocidad() throws InputMismatchException {
         System.out.print("Introduce la velocidad: ");
         int velocidad = -1;
         do {
@@ -153,5 +149,8 @@ public class Vista {
         System.out.println();
         return velocidad;
 
+    }
+    public void imprimirError() {
+        System.err.println("Has introducido mal el dato, introducelo de nuevo");
     }
 }

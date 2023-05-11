@@ -20,8 +20,8 @@ import java.util.InputMismatchException;
 
 public class Controlador {
 
-    private Vista vista;
-    private PokemonDAOImp modelo;
+    public Vista vista;
+    public PokemonDAOImp modelo;
 
 
     public Controlador() {
@@ -54,9 +54,9 @@ public class Controlador {
                     } catch (PokemonNotFoundException e) {
                         System.err.println("No se encuentra el Pokemon");
                     }
-                   break;
+                    break;
                 case 4: /*Cargar lista desde un CSV existente*/
-                    Pokemon pokeParaActualizar= vista.pedirPokemon();
+                    Pokemon pokeParaActualizar = pedirPokemon();
                     try {
                         modelo.actualizar(pokeParaActualizar);
                     } catch (PokemonNotFoundException e) {
@@ -64,15 +64,125 @@ public class Controlador {
                     }
                     break;
                 case 5:
-                    Pokemon poke= vista.pedirPokemon();
+                    Pokemon poke = pedirPokemon();
                     try {
                         modelo.crear(poke);
                     } catch (PokemonRepeatedException e) {
                         System.err.println("El pokemon ya existe");
                     }
                     break;
+                    /*String nombreNuevoPokemon = vista.pedirNombre();
+                    Pokemon.Clases clase = vista.pedirClase();
+                    int vida = vista.pedirVida();
+                    int defensa = vista.pedirDefensa();
+                    int ataque = vista.pedirAtaque();
+                    int velocidad = vista.pedirVelocidad();
+                    Pokemon poke = new Pokemon(nombreNuevoPokemon, clase, vida, defensa, ataque, velocidad);
+                 */
             }
         } while (opcion != 6);
+
+
     }
 
+    public Pokemon pedirPokemon() {
+
+        String nombreNuevoPokemon = pedirNombre();
+        Pokemon.Clases clase = vista.pedirClase();
+        int vida = vista.pedirVida();
+        int defensa = vista.pedirDefensa();
+        int ataque = vista.pedirAtaque();
+        int velocidad = vista.pedirVelocidad();
+        Pokemon poke = new Pokemon(nombreNuevoPokemon, clase, vida, defensa, ataque, velocidad);
+        return poke;
+    }
+
+    public String pedirNombre() {
+
+        String nombre;
+        do {
+            nombre = vista.pedirNombre();
+            if (nombre.equals("")) {
+                vista.imprimirError();
+            }
+        } while (nombre.equals("")/*nombre.equals("\n")*/);
+
+        return nombre;
+    }
+
+    public Pokemon.Clases pedirClase() {
+        Pokemon.Clases clase = Pokemon.Clases.SIN_CLASE;
+        try {
+            clase = vista.pedirClase();
+        } catch (IllegalArgumentException e) {
+            vista.imprimirError();
+            pedirClase();
+        }
+        return clase;
+    }
+
+    public int pedirVida() {
+        int vida = -1;
+        do {
+            try {
+                vida = vista.pedirVida();
+                if (vida < 0 || vida > 50) {
+                    vista.imprimirError();
+                }
+            } catch (InputMismatchException e) {
+                vista.imprimirError();
+                /*sc.nextLine();*/
+            }
+        } while (vida < 0 || vida > 50);
+        return vida;
+    }
+
+
+    public int pedirAtaque() {
+        int ataque = -1;
+        do {
+            try {
+                ataque = vista.pedirVida();
+                if (ataque < 0 || ataque > 50) {
+                    vista.imprimirError();
+                }
+            } catch (InputMismatchException e) {
+                vista.imprimirError();
+                /*sc.nextLine();*/
+            }
+        } while (ataque < 0 || ataque > 50);
+        return ataque;
+    }
+
+    public int pedirDefensa() {
+        int defensa = -1;
+        do {
+            try {
+                defensa = vista.pedirVida();
+                if (defensa < 0 || defensa > 50) {
+                    vista.imprimirError();
+                }
+            } catch (InputMismatchException e) {
+                vista.imprimirError();
+                /*sc.nextLine();*/
+            }
+        } while (defensa < 0 || defensa > 50);
+        return defensa;
+    }
+
+    public int pedirVelocidad() {
+        int velocidad = -1;
+        do {
+            try {
+                velocidad = vista.pedirVida();
+                if (velocidad < 0 || velocidad > 50) {
+                    vista.imprimirError();
+                }
+            } catch (InputMismatchException e) {
+                vista.imprimirError();
+                /*sc.nextLine();*/
+            }
+        } while (velocidad < 0 || velocidad > 50);
+        return velocidad;
+    }
 }
