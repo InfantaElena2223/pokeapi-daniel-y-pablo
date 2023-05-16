@@ -48,7 +48,7 @@ public class Controlador {
                     }
                     break;
                 case 3:/*Confirmación antes de borrar*/
-                    String nombreParaEliminar = vista.pedirNombre();
+                    String nombreParaEliminar = pedirNombre();
                     try {
                         modelo.eliminarPorNombre(nombreParaEliminar);
                     } catch (PokemonNotFoundException e) {
@@ -71,14 +71,6 @@ public class Controlador {
                         System.err.println("El pokemon ya existe");
                     }
                     break;
-                    /*String nombreNuevoPokemon = vista.pedirNombre();
-                    Pokemon.Clases clase = vista.pedirClase();
-                    int vida = vista.pedirVida();
-                    int defensa = vista.pedirDefensa();
-                    int ataque = vista.pedirAtaque();
-                    int velocidad = vista.pedirVelocidad();
-                    Pokemon poke = new Pokemon(nombreNuevoPokemon, clase, vida, defensa, ataque, velocidad);
-                 */
             }
         } while (opcion != 6);
 
@@ -148,6 +140,8 @@ public class Controlador {
                 }
             } catch (InputMismatchException e) {
                 vista.imprimirError();
+
+                ataque = -2;
                 /*sc.nextLine();*/
             }
         } while (ataque < 0 || ataque > 50);
@@ -174,7 +168,7 @@ public class Controlador {
         int velocidad = -1;
         do {
             try {
-                velocidad = vista.pedirVelocidad();
+                velocidad = vista.pedirVelocidad(velocidad);
                 if (velocidad < 0 || velocidad > 50) {
                     vista.imprimirError();
                 }

@@ -92,13 +92,18 @@ public class Vista {
         return vida;
     }
 
-    public int pedirDefensa() throws InputMismatchException{
+    public int pedirDefensa(int defensa) throws InputMismatchException{
         System.out.print("Introduce la Defensa: ");
-        int defensa=-1;
-        do {
-            try{
-                 defensa = sc.nextInt();
-                if (defensa < 0 || defensa > 50) {
+        if (defensa==-1){
+            defensa = sc.nextInt();
+        } else{
+            sc.nextLine();
+            defensa = sc.nextInt();
+        }
+      /*  do {*/
+           /* try{*/
+                 /*defensa = sc.nextInt();*/
+           /*     if (defensa < 0 || defensa > 50) {
                     System.err.println("La defensa no es válida");
                     System.out.println("Introducela de nuevo: ");
                 }
@@ -106,8 +111,8 @@ public class Vista {
                 System.err.println("La defensa no es válida");
                 System.out.println("Introducela de nuevo: ");
                 sc.nextLine();
-            }
-        } while (defensa < 0 || defensa > 50);
+            }*/
+        /*} while (defensa < 0 || defensa > 50);*/
         return defensa;
     }
 
@@ -130,7 +135,7 @@ public class Vista {
         return ataque;
     }
 
-    public int pedirVelocidad() throws InputMismatchException {
+    public int pedirVelocidad(int velocidad) throws InputMismatchException {
         System.out.print("Introduce la velocidad: ");
         int velocidad = -1;
         do {

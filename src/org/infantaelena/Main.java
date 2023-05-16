@@ -9,7 +9,7 @@ import org.infantaelena.controlador.Controlador;
  */
 
 public class Main {
-    public final static String CONEXION = "jdbc:mysql://192.168.1.164/pokeapi?user=admin00&password=alumno";
+
 
 
     public static void main(String args[]) {
