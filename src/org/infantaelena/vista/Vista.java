@@ -116,7 +116,7 @@ public class Vista {
         return defensa;
     }
 
-    public int pedirAtaque() throws InputMismatchException{
+    public int pedirAtaque(int ataque) throws InputMismatchException{
         System.out.print("Introduce el Ataque: ");
         int ataque = -1;
         do {
@@ -149,9 +149,8 @@ public class Vista {
                 System.err.println("La velocidad no es válida");
                 System.out.println("Introducela de nuevo: ");
                 sc.nextLine();
-            }
-        } while (velocidad < 0 || velocidad > 50);
-        System.out.println();
+            }*/
+        //} while (velocidad < 0 || velocidad > 50);
         return velocidad;
 
     }
