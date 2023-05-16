@@ -25,8 +25,14 @@ public class Controlador {
 
 
     public Controlador() {
+        modelo = new PokemonDAOImp();/*OJOOO
+
+        CAMIAR DE ORDEN
+        PORFI
+        PLIIIS
+        -.--
+        */
         vista = new Vista();
-        modelo = new PokemonDAOImp();
         programa();
     }
 
@@ -39,7 +45,7 @@ public class Controlador {
                     modelo.leerTodos();
                     break;
                 case 2: /*Ver los detalles en consola, preguntar si quiere cambiar los datos*/
-                    String nombrePedidoPokemon = vista.pedirNombre();
+                    String nombrePedidoPokemon = pedirNombre();
 
                     try {
                         modelo.leerPorNombre(nombrePedidoPokemon);
@@ -73,8 +79,6 @@ public class Controlador {
                     break;
             }
         } while (opcion != 6);
-
-
     }
 
     public Pokemon pedirPokemon() {
@@ -117,13 +121,14 @@ public class Controlador {
         int vida = -1;
         do {
             try {
-                vida = vista.pedirVida();
+                vida = vista.pedirVida(vida);
                 if (vida < 0 || vida > 50) {
                     vista.imprimirError();
                 }
             } catch (InputMismatchException e) {
                 vista.imprimirError();
-                /*sc.nextLine();*/
+                vida = -2;
+             /*   sc.nextLine();*/
             }
         } while (vida < 0 || vida > 50);
         return vida;
@@ -134,7 +139,7 @@ public class Controlador {
         int ataque = -1;
         do {
             try {
-                ataque = vista.pedirAtaque();
+                ataque = vista.pedirAtaque(ataque);
                 if (ataque < 0 || ataque > 50) {
                     vista.imprimirError();
                 }
@@ -152,12 +157,13 @@ public class Controlador {
         int defensa = -1;
         do {
             try {
-                defensa = vista.pedirDefensa();
+                defensa = vista.pedirDefensa(defensa);
                 if (defensa < 0 || defensa > 50) {
                     vista.imprimirError();
                 }
             } catch (InputMismatchException e) {
                 vista.imprimirError();
+                  defensa = -2;
                 /*sc.nextLine();*/
             }
         } while (defensa < 0 || defensa > 50);
@@ -174,6 +180,7 @@ public class Controlador {
                 }
             } catch (InputMismatchException e) {
                 vista.imprimirError();
+                  velocidad = -2;
                 /*sc.nextLine();*/
             }
         } while (velocidad < 0 || velocidad > 50);

@@ -73,13 +73,20 @@ public class Vista {
         return clase;
     }
 
-    public int pedirVida()  throws InputMismatchException{
+    public int pedirVida(int vida)  throws InputMismatchException{
         System.out.print("Introduce la vida: ");
-        int vida = -1;
-        do {
-            try {
-                vida = sc.nextInt();
-                if (vida < 0 || vida > 50) {
+
+     if (vida==-1){
+         vida = sc.nextInt();
+     } else{
+         sc.nextLine();
+         vida = sc.nextInt();
+     }
+
+ /*       do {*/
+          /*  try {*/
+
+           /*     if (vida < 0 || vida > 50) {
                     System.err.println("La vida no es válida");
                     System.out.println("Introducela de nuevo: ");
                 }
@@ -87,8 +94,8 @@ public class Vista {
                 System.err.println("La vida no es válida");
                 System.out.println("Introducela de nuevo: ");
                 sc.nextLine();
-            }
-        } while (vida < 0 || vida > 50);
+            }*/
+ /*       } while (vida < 0 || vida > 50);*/
         return vida;
     }
 
@@ -118,30 +125,40 @@ public class Vista {
 
     public int pedirAtaque(int ataque) throws InputMismatchException{
         System.out.print("Introduce el Ataque: ");
-        int ataque = -1;
-        do {
-            try {
-                ataque = sc.nextInt();
-                if (ataque < 0 || ataque > 50) {
+        if (ataque==-1){
+            ataque = sc.nextInt();
+        } else{
+            sc.nextLine();
+            ataque = sc.nextInt();
+        }
+ /*       do {*/
+     /*       try {*/
+                /*ataque = sc.nextInt();*/
+           /*     if (ataque < 0 || ataque > 50) {
                     System.err.println("La ataque no es válida");
                     System.out.println("Introducela de nuevo: ");
-                }
-            } catch (InputMismatchException e) {
+                }*/
+       /*     } catch (InputMismatchException e) {
                 System.err.println("El ataque no es válido");
                 System.out.println("Introducela de nuevo: ");
                 sc.nextLine();
-            }
-        } while (ataque < 0 || ataque > 50);
+            }*/
+    /*    } while (ataque < 0 || ataque > 50);*/
         return ataque;
     }
 
     public int pedirVelocidad(int velocidad) throws InputMismatchException {
         System.out.print("Introduce la velocidad: ");
-        int velocidad = -1;
-        do {
-            try {
-                velocidad = sc.nextInt();
-                if (velocidad < 0 || velocidad > 50) {
+        if (velocidad==-1){
+            velocidad = sc.nextInt();
+        } else{
+            sc.nextLine();
+            velocidad = sc.nextInt();
+        }
+        //do {
+           /* try {*/
+                /*velocidad = sc.nextInt();*/
+          /*      if (velocidad < 0 || velocidad > 50) {
                     System.err.println("La velocidad no es válida");
                     System.out.println("Introducela de nuevo: ");
                 }
