@@ -5,7 +5,9 @@ import org.infantaelena.excepciones.PokemonRepeatedException;
 import org.infantaelena.modelo.dao.PokemonDAOImp;
 import org.infantaelena.modelo.entidades.Pokemon;
 import org.infantaelena.vista.Vista;
+import org.infantaelena.vista.Vista2;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 /**
@@ -20,8 +22,9 @@ import java.util.InputMismatchException;
 
 public class Controlador {
 
-    public Vista vista;
-    public PokemonDAOImp modelo;
+    private Vista vista;
+    private Vista2 vista2;
+    private PokemonDAOImp modelo;
 
 
     public Controlador() {
@@ -33,8 +36,54 @@ public class Controlador {
         PLIIIS
         -.--
         */
-        vista = new Vista();
-        programa();
+
+      /* Uso para la interfaz por comandos
+      vista = new Vista();
+        programa();*/
+        vista2 = new Vista2();
+
+        vista2.getButton1().addActionListener(e -> guardar());
+        vista2.getButton2().addActionListener(e -> mostrarTodos());
+
+
+    }
+
+    public void seleccionar(){
+   /*     try {*/
+           /* Pokemon pokemon= modelo.leerPorNombre(vista2.);*/
+       /*     vista.mostrarPokemon(pokemon);*/
+    /*    } catch (PokemonNotFoundException e) {
+            System.err.println("No se encuentra el Pokemon");
+        }*/
+
+    }
+
+    private void mostrarTodos() {
+        ArrayList <String> pokemones = new ArrayList<>();
+        pokemones.add("pikachu");
+        pokemones.add("bulbasur");
+        pokemones.add("charizard");
+
+        String texto = "";
+        for (String pokemon: pokemones) {
+            texto +=  pokemon+"\n";
+        }
+
+        vista2.getTextArea1().setText(texto);
+    }
+
+    private void guardar() {
+        System.out.println("guardando pokemon");
+        String nombre = vista2.getTfNombre().getText().trim().toLowerCase();
+        if(nombre.isEmpty()){
+            vista2.mostrarVentana("No se puede dejar vacio el nombre");
+        }
+        else {
+            // nuevo pokemon
+            // modedlo.guardarPokemon()
+            vista2.mostrarVentana("Pokemon " + nombre + " añadido con éxito");
+            vista2.getTfNombre().setText("");
+        }
     }
 
     public void programa() {
@@ -49,7 +98,8 @@ public class Controlador {
                     String nombrePedidoPokemon = pedirNombre();
 
                     try {
-                        modelo.leerPorNombre(nombrePedidoPokemon);
+                       Pokemon pokemon= modelo.leerPorNombre(nombrePedidoPokemon);
+                        vista.mostrarPokemon(pokemon);
                     } catch (PokemonNotFoundException e) {
                         System.err.println("No se encuentra el Pokemon");
                     }

@@ -56,8 +56,7 @@ public class Vista {
 
         nombre = sc.nextLine();
 
-
-        return nombre;
+        return nombre.toUpperCase();
     }
 
     public Pokemon.Clases pedirClase() throws IllegalArgumentException {
@@ -173,5 +172,9 @@ public class Vista {
     }
     public void imprimirError() {
         System.err.println("Has introducido mal el dato, introducelo de nuevo");
+    }
+
+    public void mostrarPokemon(Pokemon pokemon) {
+        System.out.println("Nombre: "+pokemon.getNombre()+", Clase: "+pokemon.getClase()+", Vida: "+pokemon.getVida()+", Defensa: " +pokemon.getDefensa()+", Ataque: "+pokemon.getAtaque()+", Velocidad: "+pokemon.getVelocidad()+".");
     }
 }

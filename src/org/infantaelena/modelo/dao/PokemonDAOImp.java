@@ -48,31 +48,22 @@ public class PokemonDAOImp implements PokemonDAO {
             statement.executeUpdate(delete);*/
 
         //Imprimir todo el contenido de la tabla
-        try (Statement statement= connection.createStatement()){
-        String selectAll = "SELECT * FROM pokeapi;";
+        try (Statement statement = connection.createStatement()) {
+            String selectAll = "SELECT * FROM pokeapi;";
 
-        ResultSet resultSet = null;
+            ResultSet resultSet = null;
 
             resultSet = statement.executeQuery(selectAll);
 
-        while (resultSet.next()) {
-            String nombre = resultSet.getString("nombre");
-            String clase = resultSet.getString("clase");
-            int vida = resultSet.getInt("vida");
-            int defensa = resultSet.getInt("defensa");
-            int ataque = resultSet.getInt("ataque");
-            int velocidad = resultSet.getInt("velocidad");
-            System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad);
-        }
-        while (resultSet.next()) {
-            String nombre = resultSet.getString("nombre");
-            String clase = resultSet.getString("clase");
-            int vida = resultSet.getInt("vida");
-            int defensa = resultSet.getInt("defensa");
-            int ataque = resultSet.getInt("ataque");
-            int velocidad = resultSet.getInt("velocidad");
-            System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad);
-        }
+            while (resultSet.next()) {
+                String nombre = resultSet.getString("nombre");
+                String clase = resultSet.getString("clase");
+                int vida = resultSet.getInt("vida");
+                int defensa = resultSet.getInt("defensa");
+                int ataque = resultSet.getInt("ataque");
+                int velocidad = resultSet.getInt("velocidad");
+                System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad);
+            }
         } catch (SQLException e) {
             System.err.println("Error al realizar la consulta");
         }
@@ -84,7 +75,7 @@ public class PokemonDAOImp implements PokemonDAO {
     } catch(Exception e){
         e.printStackTrace();
     }*/
-}
+    }
 
     private void crearTablaPokeapi() {
 
@@ -119,8 +110,39 @@ public class PokemonDAOImp implements PokemonDAO {
 
 
     @Override
-    public Pokemon leerPorNombre(String nombre) throws PokemonNotFoundException {
-        System.out.println("leyendo por nombre");
+    public Pokemon leerPorNombre(String nombrePokemon) throws PokemonNotFoundException {
+        try (Statement statement = connection.createStatement()) {
+            String selectPokemon = "SELECT * FROM pokeapi where nombre='" + nombrePokemon + "';";
+
+            ResultSet resultSet = null;
+            PreparedStatement statementPrep = statement.getConnection().prepareStatement(selectPokemon);
+            resultSet = statement.executeQuery(selectPokemon);
+
+            while (resultSet.next()) {
+                Pokemon pokemon = new Pokemon();
+                pokemon.setNombre(resultSet.getString("nombre"));
+                pokemon.setClase(Pokemon.Clases.valueOf(resultSet.getString("clase")));
+                pokemon.setVida(resultSet.getInt("vida"));
+                pokemon.setDefensa(resultSet.getInt("defensa"));
+                pokemon.setAtaque(resultSet.getInt("ataque"));
+                pokemon.setVelocidad(resultSet.getInt("velocidad"));
+                return pokemon;
+              //  System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al realizar la consulta: " + e.getMessage());
+        }
+       /* try {
+            String insert = "INSERT INTO pokeapi (nombre,clase,vida,defensa,ataque,velocidad) " +
+                    "VALUES ('%s','%s',%d,%d,%d,%d);";
+
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(String.format(insert, pokemon.getNombre(), pokemon.getClase(),
+                    pokemon.getVida(), pokemon.getDefensa(), pokemon.getAtaque(), pokemon.getVelocidad()));
+        } catch (SQLException e) {
+            System.err.println("El pokémon ya existe");
+        }
+        System.out.println("leyendo por nombre");*/
         return null;
     }
 

@@ -1,6 +1,10 @@
 package org.infantaelena;
 
 import org.infantaelena.controlador.Controlador;
+import org.infantaelena.vista.Vista;
+import org.infantaelena.vista.Vista2;
+
+import javax.swing.plaf.basic.BasicScrollPaneUI;
 
 /**
  * @author Daniel Ocaña y Pablo Polo
@@ -13,6 +17,7 @@ public class Main {
 
 
     public static void main(String args[]) {
+
           new Controlador();
 
          /*try {
