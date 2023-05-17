@@ -25,7 +25,8 @@ public class Controlador {
 
 
     public Controlador() {
-        modelo = new PokemonDAOImp();/*OJOOO
+        modelo = new PokemonDAOImp();
+        /*OJOOO
 
         CAMIAR DE ORDEN
         PORFI
