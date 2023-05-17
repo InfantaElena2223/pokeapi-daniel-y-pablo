@@ -101,17 +101,17 @@ public class Controlador {
             vista2.mostrarVentana("Elige entre: FUEGO, TIERRA, AIRE, AGUA, SIN_CLASE");
             return;
         }
-        int vida=0;
-        int ataque=0;
-        int defensa=0;
-        int velocidad=0;
+        int vida=-1;
+        int ataque=-1;
+        int defensa=-1;
+        int velocidad=-1;
         try {
             /*int*/ vida = Integer.valueOf(vista2.getTextoVida().getText());
             /*int*/ ataque = Integer.valueOf(vista2.getTextoAtaque().getText());
             /*int*/ defensa = Integer.valueOf(vista2.getTextoDefensa().getText());
             /*int*/ velocidad = Integer.valueOf(vista2.getTextoVelocidad().getText());
         }catch (NumberFormatException e){
-            vista2.mostrarVentana("Has introducido mal los datos. Solo puedes meter números");
+          /*  vista2.mostrarVentana("Has introducido mal los datos. Solo puedes meter números");*/
         }
 
         if(nombre.isEmpty() || (vida<0 || vida>50) || (ataque<0 || ataque>50) || ( defensa<0 || defensa>50)|| (velocidad<0 || velocidad>50)){
