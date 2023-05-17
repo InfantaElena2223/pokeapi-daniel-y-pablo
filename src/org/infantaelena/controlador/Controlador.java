@@ -42,10 +42,12 @@ public class Controlador {
         programa();*/
         vista2 = new Vista2();
 
-        vista2.getButton1().addActionListener(e -> guardar());
-        vista2.getButton2().addActionListener(e -> mostrarTodos());
+        vista2.getBoton1().addActionListener(e -> guardar());
+        vista2.getBoton2().addActionListener(e-> seleccionar());
+        vista2.getBoton3().addActionListener(e -> mostrarTodos());
 
-
+       /* vista2.getBoton4().addActionListener(e-> eliminar());*/
+        /*vista2.getBoton5().addActionListener(e-> actualizar());*/
     }
 
     public void seleccionar(){
