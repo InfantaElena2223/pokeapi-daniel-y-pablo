@@ -3,8 +3,8 @@ package org.infantaelena.vista;
 import javax.swing.*;
 
 public class Vista2 extends JFrame{
-    private JTextField tfNombre;
-    private JTextField textField2;
+    private JTextField textoNombre;
+    private JTextField textoClase;
     private JButton button1;
     private JButton button2;
     private JButton button3;
@@ -12,7 +12,10 @@ public class Vista2 extends JFrame{
     private JTextArea textArea1;
     private JLabel etiquetaNombre;
     private JPanel panelPrincipal;
-    
+    private JTextField textoVida;
+    private JTextField textoDefensa;
+    private JTextField textoAtaque;
+
     public Vista2(){
         super("PokeAPI");
         setContentPane(panelPrincipal);
@@ -26,19 +29,19 @@ public class Vista2 extends JFrame{
     }
 
     public JTextField getTfNombre() {
-        return tfNombre;
+        return textoNombre;
     }
 
     public void setTfNombre(JTextField tfNombre) {
-        this.tfNombre = tfNombre;
+        this.textoNombre = tfNombre;
     }
 
     public JTextField getTextField2() {
-        return textField2;
+        return textoClase;
     }
 
     public void setTextField2(JTextField textField2) {
-        this.textField2 = textField2;
+        this.textoClase = textField2;
     }
 
     public JButton getButton1() {
