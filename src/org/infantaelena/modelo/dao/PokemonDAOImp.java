@@ -103,7 +103,8 @@ public class PokemonDAOImp implements PokemonDAO {
             statement.executeUpdate(String.format(insert, pokemon.getNombre(), pokemon.getClase(),
                     pokemon.getVida(), pokemon.getDefensa(), pokemon.getAtaque(), pokemon.getVelocidad()));
         } catch (SQLException e) {
-            System.err.println("El pokémon ya existe");
+            throw new PokemonRepeatedException("El pokémon ya existe");
+            /*System.err.println("El pokémon ya existe");*/
         }
 
     }
@@ -111,6 +112,7 @@ public class PokemonDAOImp implements PokemonDAO {
 
     @Override
     public Pokemon leerPorNombre(String nombrePokemon) throws PokemonNotFoundException {
+        Pokemon pokemon=null;
         try (Statement statement = connection.createStatement()) {
             String selectPokemon = "SELECT * FROM pokeapi where nombre='" + nombrePokemon + "';";
 
@@ -119,18 +121,18 @@ public class PokemonDAOImp implements PokemonDAO {
             resultSet = statement.executeQuery(selectPokemon);
 
             while (resultSet.next()) {
-                Pokemon pokemon = new Pokemon();
+                pokemon = new Pokemon();
                 pokemon.setNombre(resultSet.getString("nombre"));
                 pokemon.setClase(Pokemon.Clases.valueOf(resultSet.getString("clase")));
                 pokemon.setVida(resultSet.getInt("vida"));
                 pokemon.setDefensa(resultSet.getInt("defensa"));
                 pokemon.setAtaque(resultSet.getInt("ataque"));
                 pokemon.setVelocidad(resultSet.getInt("velocidad"));
-                return pokemon;
+
               //  System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad);
             }
         } catch (SQLException e) {
-            System.err.println("Error al realizar la consulta: " + e.getMessage());
+            throw new PokemonNotFoundException("Error al realizar la consulta: " + e.getMessage());
         }
        /* try {
             String insert = "INSERT INTO pokeapi (nombre,clase,vida,defensa,ataque,velocidad) " +
@@ -143,7 +145,7 @@ public class PokemonDAOImp implements PokemonDAO {
             System.err.println("El pokémon ya existe");
         }
         System.out.println("leyendo por nombre");*/
-        return null;
+        return pokemon;
     }
 
     @Override

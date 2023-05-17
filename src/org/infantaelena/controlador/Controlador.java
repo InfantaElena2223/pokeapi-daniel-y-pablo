@@ -7,6 +7,7 @@ import org.infantaelena.modelo.entidades.Pokemon;
 import org.infantaelena.vista.Vista;
 import org.infantaelena.vista.Vista2;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
@@ -41,6 +42,10 @@ public class Controlador {
       vista = new Vista();
         programa();*/
         vista2 = new Vista2();
+        vista2.getTextoVida().setText("0");
+        vista2.getTextoDefensa().setText("0");
+        vista2.getTextoAtaque().setText("0");
+        vista2.getTextoVelocidad().setText("0");
 
         vista2.getBoton1().addActionListener(e -> guardar());
         vista2.getBoton2().addActionListener(e-> seleccionar());
@@ -50,14 +55,24 @@ public class Controlador {
         /*vista2.getBoton5().addActionListener(e-> actualizar());*/
     }
 
-    public void seleccionar(){
-   /*     try {*/
-           /* Pokemon pokemon= modelo.leerPorNombre(vista2.);*/
-       /*     vista.mostrarPokemon(pokemon);*/
-    /*    } catch (PokemonNotFoundException e) {
-            System.err.println("No se encuentra el Pokemon");
-        }*/
+    public void añadirPokemon() {
 
+    }
+    public void seleccionar() {
+
+        try {
+            String nombre = vista2.getTfNombre().getText().trim().toUpperCase();
+            Pokemon pokemon = modelo.leerPorNombre(nombre);
+            if (pokemon == null) {
+                vista2.mostrarVentanaError("No se ha encontrado el Pokemon");
+            } else {
+                vista2.mostrarVentana("El pokemon se encuentra en la base de datos");
+            }
+         /*   *//*Pokemon pokemon= modelo.leerPorNombre();*//*
+            vista.mostrarPokemon(pokemon);*/
+        } catch (PokemonNotFoundException e) {
+            vista2.mostrarVentanaError("No se ha encontrado el Pokemon");
+        }
     }
 
     private void mostrarTodos() {
@@ -75,28 +90,59 @@ public class Controlador {
     }
 
     private void guardar() {
+        boolean correcto = false;
         System.out.println("guardando pokemon");
-        String nombre = vista2.getTfNombre().getText().trim().toLowerCase();
-        if(nombre.isEmpty()){
-            vista2.mostrarVentana("No se puede dejar vacio el nombre");
+        String nombre = vista2.getTfNombre().getText().trim().toUpperCase();
+        Pokemon.Clases clase;
+        try {
+         clase = Pokemon.Clases.valueOf(vista2.getTextoClase().getText().trim().toUpperCase());
+        } catch (IllegalArgumentException e) {
+            vista2.mostrarVentana("La clase introducida no es válida");
+            vista2.mostrarVentana("Elige entre: FUEGO, TIERRA, AIRE, AGUA, SIN_CLASE");
+            return;
+        }
+        int vida=0;
+        int ataque=0;
+        int defensa=0;
+        int velocidad=0;
+        try {
+            /*int*/ vida = Integer.valueOf(vista2.getTextoVida().getText());
+            /*int*/ ataque = Integer.valueOf(vista2.getTextoAtaque().getText());
+            /*int*/ defensa = Integer.valueOf(vista2.getTextoDefensa().getText());
+            /*int*/ velocidad = Integer.valueOf(vista2.getTextoVelocidad().getText());
+        }catch (NumberFormatException e){
+            vista2.mostrarVentana("Has introducido mal los datos. Solo puedes meter números");
+        }
+
+        if(nombre.isEmpty() || (vida<0 || vida>50) || (ataque<0 || ataque>50) || ( defensa<0 || defensa>50)|| (velocidad<0 || velocidad>50)){
+            vista2.mostrarVentana("Has introducido mal los datos, no puede haber campos vacíos, y los valores numéricos " +
+                    "tienen que estar entre 1 y 50");
         }
         else {
+            Pokemon pokemon = new Pokemon(nombre, clase, vida, ataque, defensa, velocidad);
+            try {
+                modelo.crear(pokemon);
+                vista2.mostrarVentana("Pokemon " + nombre + " añadido con éxito");
+                vista2.getTfNombre().setText("");
+            }catch (PokemonRepeatedException e){
+                vista2.mostrarVentanaError("El pokemon ya existe");
+            }
+
             // nuevo pokemon
-            // modedlo.guardarPokemon()
-            vista2.mostrarVentana("Pokemon " + nombre + " añadido con éxito");
-            vista2.getTfNombre().setText("");
+            /*modelo.crear(nombre);*/
+
         }
     }
 
-    public void programa() {
+   /* public void programa() {
         int opcion;
         do {
             opcion = vista.mostrarMenu();
             switch (opcion) {
-                case 1:/*Filtrar por tipo, */
+                case 1:*//*Filtrar por tipo, *//*
                     modelo.leerTodos();
                     break;
-                case 2: /*Ver los detalles en consola, preguntar si quiere cambiar los datos*/
+                case 2: *//*Ver los detalles en consola, preguntar si quiere cambiar los datos*//*
                     String nombrePedidoPokemon = pedirNombre();
 
                     try {
@@ -106,7 +152,7 @@ public class Controlador {
                         System.err.println("No se encuentra el Pokemon");
                     }
                     break;
-                case 3:/*Confirmación antes de borrar*/
+                case 3:*//*Confirmación antes de borrar*//*
                     String nombreParaEliminar = pedirNombre();
                     try {
                         modelo.eliminarPorNombre(nombreParaEliminar);
@@ -114,7 +160,7 @@ public class Controlador {
                         System.err.println("No se encuentra el Pokemon");
                     }
                     break;
-                case 4: /*Cargar lista desde un CSV existente*/
+                case 4: *//*Cargar lista desde un CSV existente*//*
                     Pokemon pokeParaActualizar = pedirPokemon();
                     try {
                         modelo.actualizar(pokeParaActualizar);
@@ -132,7 +178,7 @@ public class Controlador {
                     break;
             }
         } while (opcion != 6);
-    }
+    }*/
 
     public Pokemon pedirPokemon() {
 
@@ -150,9 +196,11 @@ public class Controlador {
 
         String nombre;
         do {
-            nombre = vista.pedirNombre();
+            nombre = vista2.getTfNombre().getText().trim().toUpperCase();
+            /*nombre = vista.pedirNombre();*/
             if (nombre.equals("")) {
-                vista.imprimirError();
+
+              /*  vista2.mostrarVentana();*/
             }
         } while (nombre.equals("")/*nombre.equals("\n")*/);
 

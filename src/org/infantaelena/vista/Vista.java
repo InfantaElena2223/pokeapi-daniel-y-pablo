@@ -2,6 +2,7 @@ package org.infantaelena.vista;
 
 import org.infantaelena.modelo.entidades.Pokemon;
 
+import javax.swing.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
