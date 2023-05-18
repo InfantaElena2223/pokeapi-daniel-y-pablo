@@ -60,7 +60,7 @@ public class Controlador {
 
 
     private void guardar() {
-        boolean correcto = false;
+
         System.out.println("guardando pokemon");
         String nombre = vista2.getTfNombre().getText().trim().toUpperCase();
         Pokemon.Clases clase;
