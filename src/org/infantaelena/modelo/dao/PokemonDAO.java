@@ -36,4 +36,5 @@ public interface PokemonDAO {
 
     public void eliminarPorNombre(String nombre) throws PokemonNotFoundException;
 
+
 }

@@ -7,9 +7,9 @@ import org.infantaelena.modelo.entidades.Pokemon;
 import org.infantaelena.vista.Vista;
 import org.infantaelena.vista.Vista2;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 
 /**
  * Clase que se encarga de obtener los datos de la vista
@@ -48,46 +48,17 @@ public class Controlador {
         vista2.getTextoVelocidad().setText("0");
 
         vista2.getBoton1().addActionListener(e -> guardar());
-        vista2.getBoton2().addActionListener(e-> seleccionar());
+        vista2.getBoton2().addActionListener(e -> seleccionar());
         vista2.getBoton3().addActionListener(e -> mostrarTodos());
+        vista2.getBoton4().addActionListener(e-> eliminar());
 
-       /* vista2.getBoton4().addActionListener(e-> eliminar());*/
         /*vista2.getBoton5().addActionListener(e-> actualizar());*/
     }
 
     /*public void añadirPokemon() {
 
-    }
-    public void seleccionar() {
+    }*/
 
-        try {
-            String nombre = vista2.getTfNombre().getText().trim().toUpperCase();
-            Pokemon pokemon = modelo.leerPorNombre(nombre);
-            if (pokemon == null) {
-                vista2.mostrarVentanaError("No se ha encontrado el Pokemon");
-            } else {
-                vista2.mostrarVentana("El pokemon se encuentra en la base de datos");
-            }
-         /*   *//*Pokemon pokemon= modelo.leerPorNombre();*//*
-            vista.mostrarPokemon(pokemon);*/
-        } catch (PokemonNotFoundException e) {
-            vista2.mostrarVentanaError("No se ha encontrado el Pokemon");
-        }
-    }
-
-    private void mostrarTodos() {
-        ArrayList <String> pokemones = new ArrayList<>();
-        pokemones.add("pikachu");
-        pokemones.add("bulbasur");
-        pokemones.add("charizard");
-
-        String texto = "";
-        for (String pokemon: pokemones) {
-            texto +=  pokemon+"\n";
-        }
-
-        vista2.getTextArea1().setText(texto);
-    }
 
     private void guardar() {
         boolean correcto = false;
@@ -95,26 +66,30 @@ public class Controlador {
         String nombre = vista2.getTfNombre().getText().trim().toUpperCase();
         Pokemon.Clases clase;
         try {
-         clase = Pokemon.Clases.valueOf(vista2.getTextoClase().getText().trim().toUpperCase());
+            clase = Pokemon.Clases.valueOf(vista2.getTextoClase().getText().trim().toUpperCase());
         } catch (IllegalArgumentException e) {
-            vista2.mostrarVentana("La clase introducida no es válida");
+            vista2.mostrarVentanaError("La clase introducida no es válida");
             vista2.mostrarVentana("Elige entre: FUEGO, TIERRA, AIRE, AGUA, SIN_CLASE");
             return;
         }
-        int vida=-1;
-        int ataque=-1;
-        int defensa=-1;
-        int velocidad=-1;
+        int vida = -1;
+        int ataque = -1;
+        int defensa = -1;
+        int velocidad = -1;
         try {
-            /*int*/ vida = Integer.valueOf(vista2.getTextoVida().getText());
-            /*int*/ ataque = Integer.valueOf(vista2.getTextoAtaque().getText());
-            /*int*/ defensa = Integer.valueOf(vista2.getTextoDefensa().getText());
-            /*int*/ velocidad = Integer.valueOf(vista2.getTextoVelocidad().getText());
-        }catch (NumberFormatException e){
-          /*  vista2.mostrarVentana("Has introducido mal los datos. Solo puedes meter números");*/
+            /*int*/
+            vida = Integer.valueOf(vista2.getTextoVida().getText());
+            /*int*/
+            ataque = Integer.valueOf(vista2.getTextoAtaque().getText());
+            /*int*/
+            defensa = Integer.valueOf(vista2.getTextoDefensa().getText());
+            /*int*/
+            velocidad = Integer.valueOf(vista2.getTextoVelocidad().getText());
+        } catch (NumberFormatException e) {
+            /*  vista2.mostrarVentana("Has introducido mal los datos. Solo puedes meter números");*/
         }
 
-        if(nombre.isEmpty() || (vida<0 || vida>50) || (ataque<0 || ataque>50) || ( defensa<0 || defensa>50)|| (velocidad<0 || velocidad>50)){
+        if (nombre.isEmpty() || (vida < 0 || vida > 50) || (ataque < 0 || ataque > 50) || (defensa < 0 || defensa > 50) || (velocidad < 0 || velocidad > 50)) {
             vista2.mostrarVentana("Has introducido mal los datos, no puede haber campos vacíos, y los valores numéricos " +
                     "tienen que estar entre 0 y 50");
         } else {
@@ -122,8 +97,13 @@ public class Controlador {
             try {
                 modelo.crear(pokemon);
                 vista2.mostrarVentana("Pokemon " + nombre + " añadido con éxito");
-                vista2.getTfNombre().setText("");
-            }catch (PokemonRepeatedException e){
+                vista2.getTextoNombre().setText("");
+                vista2.getTextoClase().setText("");
+                vista2.getTextoVida().setText("0");
+                vista2.getTextoDefensa().setText("0");
+                vista2.getTextoAtaque().setText("0");
+                vista2.getTextoVelocidad().setText("0");
+            } catch (PokemonRepeatedException e) {
                 vista2.mostrarVentanaError("El pokemon ya existe");
             }
 
@@ -275,7 +255,7 @@ public class Controlador {
             /*nombre = vista.pedirNombre();*/
             if (nombre.equals("")) {
 
-              /*  vista2.mostrarVentana();*/
+                /*  vista2.mostrarVentana();*/
             }
         } while (nombre.equals("")/*nombre.equals("\n")*/);
 
@@ -304,7 +284,7 @@ public class Controlador {
             } catch (InputMismatchException e) {
                 vista.imprimirError();
                 vida = -2;
-             /*   sc.nextLine();*/
+                /*   sc.nextLine();*/
             }
         } while (vida < 0 || vida > 50);
         return vida;
@@ -339,7 +319,7 @@ public class Controlador {
                 }
             } catch (InputMismatchException e) {
                 vista.imprimirError();
-                  defensa = -2;
+                defensa = -2;
                 /*sc.nextLine();*/
             }
         } while (defensa < 0 || defensa > 50);
@@ -356,7 +336,7 @@ public class Controlador {
                 }
             } catch (InputMismatchException e) {
                 vista.imprimirError();
-                  velocidad = -2;
+                velocidad = -2;
                 /*sc.nextLine();*/
             }
         } while (velocidad < 0 || velocidad > 50);

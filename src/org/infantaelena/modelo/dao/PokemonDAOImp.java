@@ -6,6 +6,7 @@ import org.infantaelena.excepciones.PokemonRepeatedException;
 import org.infantaelena.modelo.entidades.Pokemon;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -113,12 +114,13 @@ public class PokemonDAOImp implements PokemonDAO {
 
     @Override
     public Pokemon leerPorNombre(String nombrePokemon) throws PokemonNotFoundException {
+        int contadorFilas = 0;
         Pokemon pokemon=null;
         try (Statement statement = connection.createStatement()) {
             String selectPokemon = "SELECT * FROM pokeapi where nombre='" + nombrePokemon + "';";
 
             ResultSet resultSet = null;
-            PreparedStatement statementPrep = statement.getConnection().prepareStatement(selectPokemon);
+
             resultSet = statement.executeQuery(selectPokemon);
 
             while (resultSet.next()) {
@@ -129,7 +131,7 @@ public class PokemonDAOImp implements PokemonDAO {
                 pokemon.setDefensa(resultSet.getInt("defensa"));
                 pokemon.setAtaque(resultSet.getInt("ataque"));
                 pokemon.setVelocidad(resultSet.getInt("velocidad"));
-
+                contadorFilas++;
               //  System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad);
             }
         } catch (SQLException e) {
@@ -155,7 +157,64 @@ public class PokemonDAOImp implements PokemonDAO {
     @Override
     public List<Pokemon> leerTodos() {
         System.out.println("leyendo todos");
-        return null;
+        List<Pokemon> pokemones=new ArrayList<>();
+        try (Statement statement = connection.createStatement()) {
+            String selectAll = "SELECT * FROM pokeapi;";
+
+            ResultSet resultSet = null;
+
+            resultSet = statement.executeQuery(selectAll);
+
+            while (resultSet.next()) {
+                Pokemon pokemin = new Pokemon();
+                String nombre = resultSet.getString("nombre");
+                String clase = resultSet.getString("clase");
+                int vida = resultSet.getInt("vida");
+                int defensa = resultSet.getInt("defensa");
+                int ataque = resultSet.getInt("ataque");
+                int velocidad = resultSet.getInt("velocidad");
+                pokemin.setNombre(nombre);
+                pokemin.setClase(Pokemon.Clases.valueOf(clase));
+                pokemin.setVida(vida);
+                pokemin.setDefensa(defensa);
+                pokemin.setAtaque(ataque);
+                pokemin.setVelocidad(velocidad);
+                pokemones.add(pokemin);
+                /*System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad); */
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al realizar la consulta");
+        }
+
+        return pokemones;
+    }
+
+
+    public List<Pokemon> leerPorClase(String clase) throws RuntimeException{
+        List<Pokemon> pokemones=new ArrayList<>();
+        try (Statement statement = connection.createStatement()) {
+            String selectPokemon = "SELECT * FROM pokeapi where clase='" + clase + "';";
+
+            ResultSet resultSet = null;
+
+            resultSet = statement.executeQuery(selectPokemon);
+
+            while (resultSet.next()) {
+                Pokemon pokemon = new Pokemon();
+                pokemon.setNombre(resultSet.getString("nombre"));
+                pokemon.setClase(Pokemon.Clases.valueOf(resultSet.getString("clase")));
+                pokemon.setVida(resultSet.getInt("vida"));
+                pokemon.setDefensa(resultSet.getInt("defensa"));
+                pokemon.setAtaque(resultSet.getInt("ataque"));
+                pokemon.setVelocidad(resultSet.getInt("velocidad"));
+                pokemones.add(pokemon);
+                //  System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
+        /*pokemones.add()*/
+        return pokemones;
     }
 
     @Override
@@ -167,6 +226,22 @@ public class PokemonDAOImp implements PokemonDAO {
 
     @Override
     public void eliminarPorNombre(String nombre) throws PokemonNotFoundException {
+        try (Statement statement = connection.createStatement()) {
+            String selectPokemon = "SELECT * FROM pokeapi where nombre='" + nombre + "';";
+
+            ResultSet resultSet = null;
+
+            resultSet = statement.executeQuery(selectPokemon);
+            while (resultSet.next()) {
+                //Para que nos de la excepción si no existe ningún pokémon con ese nombre
+            }
+            String deletePokemon = "DELETE FROM pokeapi where nombre='" + nombre + "';";
+ /*           ResultSet resultSet = null;*/
+
+           statement.executeUpdate(deletePokemon);
+        } catch (SQLException e) {
+                throw new PokemonNotFoundException("No se ha encontrado el pokémon");
+        }
         System.out.println("eliminando por nombre");
     }
 }

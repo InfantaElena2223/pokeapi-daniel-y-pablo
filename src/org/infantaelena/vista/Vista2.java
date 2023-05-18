@@ -36,6 +36,7 @@ public class Vista2 extends JFrame{
     }
 
     public void mostrarVentanaError(String mensaje) {
+
         JOptionPane.showMessageDialog(this, mensaje,"Error",JOptionPane.ERROR_MESSAGE);
     }
 
