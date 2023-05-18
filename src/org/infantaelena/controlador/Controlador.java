@@ -55,7 +55,7 @@ public class Controlador {
         /*vista2.getBoton5().addActionListener(e-> actualizar());*/
     }
 
-    public void añadirPokemon() {
+    /*public void añadirPokemon() {
 
     }
     public void seleccionar() {
