@@ -221,7 +221,6 @@ public class PokemonDAOImp implements PokemonDAO {
     public void actualizar(Pokemon pokemon) throws PokemonNotFoundException {
         System.out.println("Actualizando");
         System.out.println("heyty");
-
     }
 
     @Override

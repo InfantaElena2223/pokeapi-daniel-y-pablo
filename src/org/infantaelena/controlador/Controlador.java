@@ -51,8 +51,7 @@ public class Controlador {
         vista2.getBoton2().addActionListener(e -> seleccionar());
         vista2.getBoton3().addActionListener(e -> mostrarTodos());
         vista2.getBoton4().addActionListener(e-> eliminar());
-
-        /*vista2.getBoton5().addActionListener(e-> actualizar());*/
+        vista2.getBoton5().addActionListener(e-> actualizar());
     }
 
     /*public void añadirPokemon() {
@@ -188,6 +187,74 @@ public class Controlador {
         } catch (PokemonNotFoundException e) {
             vista2.mostrarVentanaError("No se ha encontrado el Pokemon");
         }
+    }
+
+    public void actualizar(){
+
+        System.out.println("Actualizando pokemon");
+        String nombre = vista2.getTfNombre().getText().trim().toUpperCase();
+        Pokemon.Clases clase;
+        try {
+            clase = Pokemon.Clases.valueOf(vista2.getTextoClase().getText().trim().toUpperCase());
+        } catch (IllegalArgumentException e) {
+            vista2.mostrarVentanaError("La clase introducida no es válida");
+            vista2.mostrarVentana("Elige entre: FUEGO, TIERRA, AIRE, AGUA, SIN_CLASE");
+            return;
+        }
+        int vida = -1;
+        int ataque = -1;
+        int defensa = -1;
+        int velocidad = -1;
+        try {
+            /*int*/
+            vida = Integer.valueOf(vista2.getTextoVida().getText());
+            /*int*/
+            ataque = Integer.valueOf(vista2.getTextoAtaque().getText());
+            /*int*/
+            defensa = Integer.valueOf(vista2.getTextoDefensa().getText());
+            /*int*/
+            velocidad = Integer.valueOf(vista2.getTextoVelocidad().getText());
+        } catch (NumberFormatException e) {
+            /*  vista2.mostrarVentana("Has introducido mal los datos. Solo puedes meter números");*/
+        }
+
+        if (nombre.isEmpty() || (vida < 0 || vida > 50) || (ataque < 0 || ataque > 50) || (defensa < 0 || defensa > 50) || (velocidad < 0 || velocidad > 50)) {
+            vista2.mostrarVentana("Has introducido mal los datos, no puede haber campos vacíos, y los valores numéricos " +
+                    "tienen que estar entre 0 y 50");
+        } else {
+            Pokemon pokemon = new Pokemon(nombre, clase, vida, ataque, defensa, velocidad);
+            try {
+                modelo.actualizar(pokemon);
+                vista2.mostrarVentana("Pokemon " + nombre + " actualizado con éxito");
+                vista2.getTextoNombre().setText("");
+                vista2.getTextoClase().setText("");
+                vista2.getTextoVida().setText("0");
+                vista2.getTextoDefensa().setText("0");
+                vista2.getTextoAtaque().setText("0");
+                vista2.getTextoVelocidad().setText("0");
+            } catch (PokemonNotFoundException e) {
+                vista2.mostrarVentanaError("El pokemon no se encuentra");
+
+            }catch (RuntimeException e){
+                vista2.mostrarVentanaError("No se ha podido actualizar el pokemon");
+            }
+
+        }
+
+        // nuevo pokemon
+        /*modelo.crear(nombre);*/
+       /* try {
+            Pokemon poke = new Pokemon();
+            try {
+                clase = Pokemon.Clases.valueOf(vista2.getTextoClase().getText().trim().toUpperCase());
+            } catch (IllegalArgumentException e) {
+                vista2.mostrarVentanaError("La clase introducida no es válida");
+                vista2.mostrarVentana("Elige entre: FUEGO, TIERRA, AIRE, AGUA, SIN_CLASE");
+                return;
+            }
+        } catch (RuntimeException e) {
+            vista2.mostrarVentanaError("No se ha podido actualizar el pokemon");
+        }*/
     }
    /* public void programa() {
         int opcion;
