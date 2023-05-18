@@ -1,5 +1,6 @@
 package org.infantaelena.modelo.dao;
 
+import org.h2.result.Row;
 import org.infantaelena.excepciones.PokemonNotFoundException;
 import org.infantaelena.excepciones.PokemonRepeatedException;
 import org.infantaelena.modelo.entidades.Pokemon;
@@ -134,7 +135,11 @@ public class PokemonDAOImp implements PokemonDAO {
         } catch (SQLException e) {
             throw new PokemonNotFoundException("Error al realizar la consulta: " + e.getMessage());
         }
-       /* try {
+        if (contadorFilas == 0) {
+            throw new PokemonNotFoundException("Error al realizar la consulta");
+        }
+        return pokemon;
+        /* try {
             String insert = "INSERT INTO pokeapi (nombre,clase,vida,defensa,ataque,velocidad) " +
                     "VALUES ('%s','%s',%d,%d,%d,%d);";
 
@@ -145,7 +150,6 @@ public class PokemonDAOImp implements PokemonDAO {
             System.err.println("El pokémon ya existe");
         }
         System.out.println("leyendo por nombre");*/
-        return pokemon;
     }
 
     @Override

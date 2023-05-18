@@ -116,9 +116,8 @@ public class Controlador {
 
         if(nombre.isEmpty() || (vida<0 || vida>50) || (ataque<0 || ataque>50) || ( defensa<0 || defensa>50)|| (velocidad<0 || velocidad>50)){
             vista2.mostrarVentana("Has introducido mal los datos, no puede haber campos vacíos, y los valores numéricos " +
-                    "tienen que estar entre 1 y 50");
-        }
-        else {
+                    "tienen que estar entre 0 y 50");
+        } else {
             Pokemon pokemon = new Pokemon(nombre, clase, vida, ataque, defensa, velocidad);
             try {
                 modelo.crear(pokemon);
@@ -134,6 +133,82 @@ public class Controlador {
         }
     }
 
+    public void seleccionar() {
+
+        try {
+            String nombre = vista2.getTfNombre().getText().trim().toUpperCase();
+            Pokemon pokemon = modelo.leerPorNombre(nombre);
+            if (pokemon == null) {
+                throw new PokemonNotFoundException("No se ha encontrado");
+               /* vista2.mostrarVentanaError("No se ha encontrado el Pokemon");*/
+            } else {
+                vista2.getTextoNombre().setText(pokemon.getNombre());
+                vista2.getTextoClase().setText(String.valueOf(pokemon.getClase()));
+                vista2.getTextoVida().setText(String.valueOf(pokemon.getVida()));
+                vista2.getTextoDefensa().setText(String.valueOf(pokemon.getDefensa()));
+                vista2.getTextoAtaque().setText(String.valueOf(pokemon.getAtaque()));
+                vista2.getTextoVelocidad().setText(String.valueOf(pokemon.getVelocidad()));
+
+            }
+            /*   *//*Pokemon pokemon= modelo.leerPorNombre();*//*
+            vista.mostrarPokemon(pokemon);*/
+        } catch (PokemonNotFoundException e) {
+            vista2.mostrarVentanaError("No se ha encontrado el Pokemon");
+        }
+    }
+
+    private void mostrarTodos() {
+        List<Pokemon> pokemones = new ArrayList<>();
+        /*pokemones.add("pikachu");
+        pokemones.add("bulbasur");
+        pokemones.add("charizard");*/
+        String textoClase = String.valueOf(vista2.getTextoClase().getText()).toUpperCase();
+        if (textoClase.equals("AIRE") || textoClase.equals("FUEGO")
+                || textoClase.equals("TIERRA") || textoClase.equals("AGUA")) {
+            try {
+                pokemones=modelo.leerPorClase(textoClase);
+            } catch (RuntimeException e) {
+                vista2.mostrarVentanaError("Error al realizar la consulta");
+            }
+        } else {
+            vista2.mostrarVentana("Dado que no has especificado una clase válida, se mostrarán " +
+                    "todos los pokemons");
+            pokemones = modelo.leerTodos();
+        }
+        String texto = "";
+        for (Pokemon pokemon : pokemones) {
+            texto += pokemon.getNombre() + "\n";
+        }
+        if (pokemones.size() == 0) {
+            vista2.mostrarVentana("No hay ningún pokémon de esa clase");
+        } else {
+            vista2.getTextArea1().setText(texto);
+        }
+    }
+
+    public void eliminar(/*Pokemon pokemon*/) {
+        try {
+            String nombre = vista2.getTfNombre().getText().trim().toUpperCase();
+            modelo.eliminarPorNombre(nombre);
+            //Si llega hasta aquí se ha eliminado el pokémon
+            vista2.mostrarVentana("Se ha eliminado correctamente");
+           /* if (pokemon == null) {
+                vista2.mostrarVentanaError("No se ha encontrado el Pokemon");
+            } else {
+                vista2.getTextoNombre().setText(pokemon.getNombre());
+                vista2.getTextoClase().setText(String.valueOf(pokemon.getClase()));
+                vista2.getTextoVida().setText(String.valueOf(pokemon.getVida()));
+                vista2.getTextoDefensa().setText(String.valueOf(pokemon.getDefensa()));
+                vista2.getTextoAtaque().setText(String.valueOf(pokemon.getAtaque()));
+                vista2.getTextoVelocidad().setText(String.valueOf(pokemon.getVelocidad()));
+
+            }*/
+            /*   *//*Pokemon pokemon= modelo.leerPorNombre();*//*
+            vista.mostrarPokemon(pokemon);*/
+        } catch (PokemonNotFoundException e) {
+            vista2.mostrarVentanaError("No se ha encontrado el Pokemon");
+        }
+    }
    /* public void programa() {
         int opcion;
         do {
