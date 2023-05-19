@@ -233,11 +233,11 @@ public class PokemonDAOImp implements PokemonDAO {
             if (contadorFilas == 0) {
                 throw new PokemonNotFoundException("Error al realizar la consulta");
             } else {
-                String update = "UPDATE pokeapi SET nombre = '" + pokemon.getNombre() + "'," +
-                        "clase = '" + pokemon.getClase() + "',vida = '" + pokemon.getVida() + "'," +
-                        "defensa = '" + pokemon.getDefensa() + "',ataque = '" + pokemon.getAtaque() +
-                        "',velocidad = '" + pokemon.getVelocidad() + "'," +
-                        "  WHERE nombre = '" + pokemon.getNombre() + "';";
+                String update = "UPDATE pokeapi SET nombre='" + pokemon.getNombre() + "'," +
+                        "clase='" + pokemon.getClase() + "',vida='" + pokemon.getVida() + "'," +
+                        "defensa='" + pokemon.getDefensa() + "',ataque='" + pokemon.getAtaque() +
+                        "',velocidad='" + pokemon.getVelocidad() +
+                        "'  WHERE nombre='" + pokemon.getNombre() + "';";
                 statement.executeUpdate(update);
             }
 
