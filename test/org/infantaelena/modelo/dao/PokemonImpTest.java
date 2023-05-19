@@ -12,17 +12,21 @@ class PokemonImpTest {
 
     @org.junit.jupiter.api.Test
     void leerPorNombre() {
+        PokemonDAOImp modelo = new PokemonDAOImp();
     }
 
     @org.junit.jupiter.api.Test
     void leerTodos() {
+        PokemonDAOImp modelo = new PokemonDAOImp();
     }
 
     @org.junit.jupiter.api.Test
     void actualizar() {
+        PokemonDAOImp modelo = new PokemonDAOImp();
     }
 
     @org.junit.jupiter.api.Test
     void eliminarPorNombre() {
+        PokemonDAOImp modelo = new PokemonDAOImp();
     }
 }
