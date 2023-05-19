@@ -89,7 +89,7 @@ public class Controlador {
         }
 
         if (nombre.isEmpty() || (vida < 0 || vida > 50) || (ataque < 0 || ataque > 50) || (defensa < 0 || defensa > 50) || (velocidad < 0 || velocidad > 50)) {
-            vista2.mostrarVentana("Has introducido mal los datos, no puede haber campos vacíos, y los valores numéricos " +
+            vista2.mostrarVentanaError("Has introducido mal los datos, no puede haber campos vacíos, y los valores numéricos " +
                     "tienen que estar entre 0 y 50");
         } else {
             Pokemon pokemon = new Pokemon(nombre, clase, vida, ataque, defensa, velocidad);
@@ -219,7 +219,7 @@ public class Controlador {
         }
 
         if (nombre.isEmpty() || (vida < 0 || vida > 50) || (ataque < 0 || ataque > 50) || (defensa < 0 || defensa > 50) || (velocidad < 0 || velocidad > 50)) {
-            vista2.mostrarVentana("Has introducido mal los datos, no puede haber campos vacíos, y los valores numéricos " +
+            vista2.mostrarVentanaError("Has introducido mal los datos, no puede haber campos vacíos, y los valores numéricos " +
                     "tienen que estar entre 0 y 50");
         } else {
             Pokemon pokemon = new Pokemon(nombre, clase, vida, ataque, defensa, velocidad);

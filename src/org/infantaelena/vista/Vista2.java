@@ -44,7 +44,7 @@ public class Vista2 extends JFrame{
         return textoNombre;
     }
 
-    public void setTfNombre(JTextField tfNombre) {
+   /* public void setTfNombre(JTextField tfNombre) {
         this.textoNombre = tfNombre;
     }
 
@@ -86,13 +86,13 @@ public class Vista2 extends JFrame{
 
     public void setButton4(JButton button4) {
         this.boton4 = button4;
-    }
+    }*/
 
     public JTextArea getTextArea1() {
         return textArea1;
     }
 
-    public void setTextArea1(JTextArea textArea1) {
+   /* public void setTextArea1(JTextArea textArea1) {
         this.textArea1 = textArea1;
     }
 
@@ -111,76 +111,78 @@ public class Vista2 extends JFrame{
     public void setPanelPrincipal(JPanel panelPrincipal) {
         this.panelPrincipal = panelPrincipal;
     }
-
+*/
     public JTextField getTextoNombre() {
         return textoNombre;
     }
 
+/*
     public void setTextoNombre(JTextField textoNombre) {
         this.textoNombre = textoNombre;
     }
+*/
 
     public JTextField getTextoClase() {
         return textoClase;
     }
 
-    public void setTextoClase(JTextField textoClase) {
+    /*public void setTextoClase(JTextField textoClase) {
         this.textoClase = textoClase;
     }
-
+*/
     public JButton getBoton1() {
         return boton1;
     }
 
-    public void setBoton1(JButton boton1) {
+   /* public void setBoton1(JButton boton1) {
         this.boton1 = boton1;
-    }
+    }*/
 
     public JButton getBoton3() {
         return boton3;
     }
 
-    public void setBoton3(JButton boton3) {
+    /*public void setBoton3(JButton boton3) {
         this.boton3 = boton3;
-    }
+    }*/
 
     public JButton getBoton5() {
         return boton5;
     }
 
-    public void setBoton5(JButton boton5) {
+   /* public void setBoton5(JButton boton5) {
         this.boton5 = boton5;
-    }
+    }*/
 
     public JButton getBoton4() {
         return boton4;
     }
 
-    public void setBoton4(JButton boton4) {
+    /*p*//*ublic void setBoton4(JButton boton4) {
         this.boton4 = boton4;
-    }
+    }*/
 
     public JTextField getTextoVida() {
         return textoVida;
     }
 
-    public void setTextoVida(JTextField textoVida) {
+    /*public void setTextoVida(JTextField textoVida) {
         this.textoVida = textoVida;
     }
-
+*/
     public JTextField getTextoDefensa() {
         return textoDefensa;
     }
 
-    public void setTextoDefensa(JTextField textoDefensa) {
+   /* public void setTextoDefensa(JTextField textoDefensa) {
         this.textoDefensa = textoDefensa;
     }
-
+*/
     public JTextField getTextoAtaque() {
         return textoAtaque;
     }
 
-    public void setTextoAtaque(JTextField textoAtaque) {
+   /* public void setTextoAtaque(JTextField textoAtaque) {
         this.textoAtaque = textoAtaque;
     }
 
@@ -223,22 +225,22 @@ public class Vista2 extends JFrame{
     public void setEtiquetaVelocidad(JLabel etiquetaVelocidad) {
         this.etiquetaVelocidad = etiquetaVelocidad;
     }
-
+*/
     public JTextField getTextoVelocidad() {
         return textoVelocidad;
     }
 
-    public void setTextoVelocidad(JTextField textoVelocidad) {
+    /*public void setTextoVelocidad(JTextField textoVelocidad) {
         this.textoVelocidad = textoVelocidad;
     }
-
+*/
     public JButton getBoton2() {
         return boton2;
     }
 
-    public void setBoton2(JButton boton2) {
+   /* public void setBoton2(JButton boton2) {
         this.boton2 = boton2;
-    }
+    }*/
 
 
 
