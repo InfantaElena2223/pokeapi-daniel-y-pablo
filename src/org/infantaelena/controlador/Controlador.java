@@ -47,9 +47,9 @@ public class Controlador {
         vista2.getTextoAtaque().setText("0");
         vista2.getTextoVelocidad().setText("0");
 
-        vista2.getBoton1().addActionListener(e -> guardar());
-        vista2.getBoton2().addActionListener(e -> seleccionar());
-        vista2.getBoton3().addActionListener(e -> mostrarTodos());
+        vista2.getBoton1().addActionListener(e-> guardar());
+        vista2.getBoton2().addActionListener(e-> seleccionar());
+        vista2.getBoton3().addActionListener(e-> mostrarTodos());
         vista2.getBoton4().addActionListener(e-> eliminar());
         vista2.getBoton5().addActionListener(e-> actualizar());
     }
