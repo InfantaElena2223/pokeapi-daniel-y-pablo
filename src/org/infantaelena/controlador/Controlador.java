@@ -159,7 +159,7 @@ public class Controlador {
             texto += pokemon.getNombre() + "\n";
         }
         if (pokemones.size() == 0) {
-            vista2.mostrarVentana("No hay ningún pokémon de esa clase");
+            vista2.mostrarVentana("No hay ningún pokémon");
         } else {
             vista2.getTextArea1().setText(texto);
         }
@@ -171,6 +171,12 @@ public class Controlador {
             modelo.eliminarPorNombre(nombre);
             //Si llega hasta aquí se ha eliminado el pokémon
             vista2.mostrarVentana("Se ha eliminado correctamente");
+            vista2.getTextoNombre().setText("");
+            vista2.getTextoClase().setText("");
+            vista2.getTextoVida().setText("0");
+            vista2.getTextoDefensa().setText("0");
+            vista2.getTextoAtaque().setText("0");
+            vista2.getTextoVelocidad().setText("0");
            /* if (pokemon == null) {
                 vista2.mostrarVentanaError("No se ha encontrado el Pokemon");
             } else {
