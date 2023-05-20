@@ -32,29 +32,11 @@ public class PokemonDAOImp implements PokemonDAO {
 
         crearTablaPokeapi();
 
-//Insertar varias filas
-           /* try{
-                String insert1 = "INSERT INTO pokeapi (nombre,clase,vida,defensa,ataque,velocidad) VALUES ('Pikachu','FUEGO',0,0,0,0);";
-                statement.executeUpdate(insert1);
-            }catch (JdbcSQLIntegrityConstraintViolationException e) {
-                System.err.println("El pokémon ya existe");
-            }*/
 
-        //Actualizar una fila
-      /*      String update = "UPDATE pokeapi SET email = 'juan@yahoo.com' WHERE nombre = 'Juan';";
-            statement.executeUpdate(update);*/
-
-        //Borrar una fila
-            /*String delete = "DELETE FROM pokeapi WHERE nombre = 'María';";
-            statement.executeUpdate(delete);*/
-
-        //Imprimir todo el contenido de la tabla
         try (Statement statement = connection.createStatement()) {
             String selectAll = "SELECT * FROM pokeapi;";
 
-            ResultSet resultSet = null;
-
-            resultSet = statement.executeQuery(selectAll);
+            ResultSet resultSet = statement.executeQuery(selectAll);
 
             while (resultSet.next()) {
                 String nombre = resultSet.getString("nombre");
@@ -118,9 +100,7 @@ public class PokemonDAOImp implements PokemonDAO {
         try (Statement statement = connection.createStatement()) {
             String selectPokemon = "SELECT * FROM pokeapi where nombre='" + nombrePokemon + "';";
 
-            ResultSet resultSet = null;
-
-            resultSet = statement.executeQuery(selectPokemon);
+            ResultSet resultSet = statement.executeQuery(selectPokemon);
 
             while (resultSet.next()) {
                 pokemon = new Pokemon();
@@ -140,29 +120,16 @@ public class PokemonDAOImp implements PokemonDAO {
             throw new PokemonNotFoundException("Error al realizar la consulta");
         }
         return pokemon;
-        /* try {
-            String insert = "INSERT INTO pokeapi (nombre,clase,vida,defensa,ataque,velocidad) " +
-                    "VALUES ('%s','%s',%d,%d,%d,%d);";
-
-            Statement statement = connection.createStatement();
-            statement.executeUpdate(String.format(insert, pokemon.getNombre(), pokemon.getClase(),
-                    pokemon.getVida(), pokemon.getDefensa(), pokemon.getAtaque(), pokemon.getVelocidad()));
-        } catch (SQLException e) {
-            System.err.println("El pokémon ya existe");
-        }
-        System.out.println("leyendo por nombre");*/
     }
 
     @Override
     public List<Pokemon> leerTodos() {
-        System.out.println("leyendo todos");
         List<Pokemon> pokemones = new ArrayList<>();
         try (Statement statement = connection.createStatement()) {
             String selectAll = "SELECT * FROM pokeapi;";
 
-            ResultSet resultSet = null;
 
-            resultSet = statement.executeQuery(selectAll);
+            ResultSet resultSet = statement.executeQuery(selectAll);
 
             while (resultSet.next()) {
                 Pokemon pokemin = new Pokemon();
@@ -194,9 +161,7 @@ public class PokemonDAOImp implements PokemonDAO {
         try (Statement statement = connection.createStatement()) {
             String selectPokemon = "SELECT * FROM pokeapi where clase='" + clase + "';";
 
-            ResultSet resultSet = null;
-
-            resultSet = statement.executeQuery(selectPokemon);
+            ResultSet resultSet = statement.executeQuery(selectPokemon);
 
             while (resultSet.next()) {
                 Pokemon pokemon = new Pokemon();
@@ -218,13 +183,11 @@ public class PokemonDAOImp implements PokemonDAO {
 
     @Override
     public void actualizar(Pokemon pokemon) throws PokemonNotFoundException {
-        int contadorFilas=0;
+        int contadorFilas = 0;
         try (Statement statement = connection.createStatement()) {
             String selectPokemon = "SELECT * FROM pokeapi where nombre='" + pokemon.getNombre() + "';";
 
-            ResultSet resultSet = null;
-
-            resultSet = statement.executeQuery(selectPokemon);
+            ResultSet resultSet = statement.executeQuery(selectPokemon);
             while (resultSet.next()) {
                 //Para que nos de la excepción si no existe ningún pokémon con ese nombre
                 contadorFilas++;
@@ -244,11 +207,6 @@ public class PokemonDAOImp implements PokemonDAO {
         } catch (SQLException e) {
             throw new RuntimeException();
         }
-        /*if (contadorfilas==0){
-
-        }*/
-        System.out.println("Actualizando");
-        System.out.println("heyty");
     }
 
     @Override
