@@ -50,14 +50,7 @@ public class PokemonDAOImp implements PokemonDAO {
         } catch (SQLException e) {
             System.err.println("Error al realizar la consulta");
         }
-        //Cerrar la conexión a la base de datos
-     /*   statement.close();
-        connection.close();*/
-    /*} catch(SQLException e){
-        System.err.println("Error al hacer operaciones con la base de datos");
-    } catch(Exception e){
-        e.printStackTrace();
-    }*/
+
     }
 
     private void crearTablaPokeapi() {
