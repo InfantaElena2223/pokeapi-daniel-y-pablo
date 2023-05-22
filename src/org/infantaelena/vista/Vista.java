@@ -7,7 +7,7 @@ import javax.swing.*;
  *
  * @author Pablo Polo, Marcos Manzano y Daniel Ocaña
  * @version 1.0
- * @date 24/04/2023
+ * @since 24/04/2023
  */
 
 public class Vista extends JFrame {
