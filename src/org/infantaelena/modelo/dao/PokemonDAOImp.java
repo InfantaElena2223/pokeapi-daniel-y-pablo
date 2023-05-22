@@ -97,7 +97,6 @@ public class PokemonDAOImp implements PokemonDAO {
                     pokemon.getVida(), pokemon.getDefensa(), pokemon.getAtaque(), pokemon.getVelocidad()));
         } catch (SQLException e) {
             throw new PokemonRepeatedException("El pokémon ya existe");
-            /*System.err.println("El pokémon ya existe");*/
         }
     }
 
@@ -126,7 +125,7 @@ public class PokemonDAOImp implements PokemonDAO {
                 pokemon.setAtaque(resultSet.getInt("ataque"));
                 pokemon.setVelocidad(resultSet.getInt("velocidad"));
                 contadorFilas++;
-                //  System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad);
+
             }
         } catch (SQLException e) {
             throw new PokemonNotFoundException("Error al realizar la consulta: " + e.getMessage());
@@ -197,12 +196,10 @@ public class PokemonDAOImp implements PokemonDAO {
                 pokemon.setAtaque(resultSet.getInt("ataque"));
                 pokemon.setVelocidad(resultSet.getInt("velocidad"));
                 pokemones.add(pokemon);
-                //  System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad);
             }
         } catch (SQLException e) {
             throw new RuntimeException();
         }
-        /*pokemones.add()*/
         return pokemones;
     }
 
@@ -265,9 +262,6 @@ public class PokemonDAOImp implements PokemonDAO {
                 String deletePokemon = "DELETE FROM pokeapi where nombre='" + nombre + "';";
                 statement.executeUpdate(deletePokemon);
             }
-
-            /*           ResultSet resultSet = null;*/
-
         } catch (SQLException e) {
             throw new PokemonNotFoundException("No se ha encontrado el pokémon");
         }

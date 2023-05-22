@@ -221,8 +221,4 @@ public class Vista extends JFrame {
     public JButton getBotonSeleccionar() {
         return botonSeleccionar;
     }
-
-
-
-
 }

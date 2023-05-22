@@ -115,7 +115,7 @@ public class Controlador {
             texto += pokemon.getNombre() + "\n";
         }
         if (pokemones.size() == 0 && claseValida) {
-            vista.mostrarVentana("No hay ningún pokémon");
+            vista.mostrarVentanaError("No hay ningún pokémon");
         } else {
             vista.getTextArea1().setText(texto);
         }
