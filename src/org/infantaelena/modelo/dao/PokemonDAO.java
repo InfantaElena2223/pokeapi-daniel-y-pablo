@@ -11,12 +11,15 @@ import java.util.List;
  * Interfaz que define los métodos de acceso a datos de la clase Pokemon
  * @author Daniel Ocaña, Marcos Manzano y Pablo Polo
  * @version 1.0
- * @date 24/04/2023
+ * @since 24/04/2023
  *
  */
 public interface PokemonDAO {
 
-    // Método para crear un nuevo Pokemon
+    /**
+     * Método para crear un nuevo Pokemon
+     */
+
 
     public void crear(Pokemon pokemon) throws PokemonRepeatedException;
 

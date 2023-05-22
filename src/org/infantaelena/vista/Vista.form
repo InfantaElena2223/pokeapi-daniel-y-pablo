@@ -44,7 +44,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="105dd" class="javax.swing.JButton" binding="boton1">
+      <component id="105dd" class="javax.swing.JButton" binding="botonAniadir">
         <constraints>
           <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -52,7 +52,7 @@
           <text value="Añadir pokémon"/>
         </properties>
       </component>
-      <component id="a3887" class="javax.swing.JButton" binding="boton4">
+      <component id="a3887" class="javax.swing.JButton" binding="botonEliminar">
         <constraints>
           <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -68,7 +68,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="6e4f9" class="javax.swing.JButton" binding="boton3">
+      <component id="6e4f9" class="javax.swing.JButton" binding="botonMostrar">
         <constraints>
           <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -146,7 +146,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="f1203" class="javax.swing.JButton" binding="boton5">
+      <component id="f1203" class="javax.swing.JButton" binding="botonActualizar">
         <constraints>
           <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -154,7 +154,7 @@
           <text value="Actualizar Pokémon"/>
         </properties>
       </component>
-      <component id="1181c" class="javax.swing.JButton" binding="boton2">
+      <component id="1181c" class="javax.swing.JButton" binding="botonSeleccionar">
         <constraints>
           <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

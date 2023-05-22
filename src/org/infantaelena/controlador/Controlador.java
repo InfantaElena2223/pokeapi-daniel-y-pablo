@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Pablo Polo, Marcos Manzano y Daniel Ocaña
  * @version 1.0
- * @date 24/04/2023
+ * @since 24/04/2023
  */
 
 
@@ -38,11 +38,11 @@ public class Controlador {
         vista = new Vista();
         establecerValoresPorDefecto();
 
-        vista.getBoton1().addActionListener(e -> guardar());
-        vista.getBoton2().addActionListener(e -> seleccionar());
-        vista.getBoton3().addActionListener(e -> mostrarPokemons());
-        vista.getBoton4().addActionListener(e -> eliminar());
-        vista.getBoton5().addActionListener(e -> actualizar());
+        vista.getBotonAniadir().addActionListener(e -> guardar());
+        vista.getBotonSeleccionar().addActionListener(e -> seleccionar());
+        vista.getBotonMostrar().addActionListener(e -> mostrarPokemons());
+        vista.getBotonEliminar().addActionListener(e -> eliminar());
+        vista.getBotonActualizar().addActionListener(e -> actualizar());
     }
 
     /**
@@ -73,7 +73,7 @@ public class Controlador {
     public void seleccionar() {
 
         try {
-            String nombre = vista.getTfNombre().getText().trim().toUpperCase();
+            String nombre = vista.getTextoNombre().getText().trim().toUpperCase();
             Pokemon pokemon = modelo.leerPorNombre(nombre);
                 vista.getTextoNombre().setText(pokemon.getNombre());
                 vista.getTextoClase().setText(String.valueOf(pokemon.getClase()));
@@ -126,7 +126,7 @@ public class Controlador {
      */
     public void eliminar() {
         try {
-            String nombre = vista.getTfNombre().getText().trim().toUpperCase();
+            String nombre = vista.getTextoNombre().getText().trim().toUpperCase();
             modelo.eliminarPorNombre(nombre);
             //Si llega hasta aquí se ha eliminado el pokémon
             vista.mostrarVentana("Se ha eliminado correctamente");
@@ -176,7 +176,7 @@ public class Controlador {
      * @return El pokemon con los datos o null si ha habido un problema.
      */
     public Pokemon convertirDatosInterfazAPokemon() {
-        String nombre = vista.getTfNombre().getText().trim().toUpperCase();
+        String nombre = vista.getTextoNombre().getText().trim().toUpperCase();
         Pokemon.Clases clase;
         try {
             clase = Pokemon.Clases.valueOf(vista.getTextoClase().getText().trim().toUpperCase());

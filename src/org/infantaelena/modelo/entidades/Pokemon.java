@@ -17,10 +17,25 @@ public class Pokemon {
      * El nombre del pokémon
      */
     private String nombre;
+    /**
+     * La clase del pokémon
+     */
     private Clases clase;
+    /**
+     * La vida del pokémon
+     */
     private int vida;
+    /**
+     * La defensa del pokémon
+     */
     private int defensa;
+    /**
+     * El ataque del pokémon
+     */
     private int ataque;
+    /**
+     * La velocidad del pokémon
+     */
     private int velocidad;
 
     /**
@@ -65,47 +80,82 @@ public class Pokemon {
         this.nombre = nombre;
     }
 
+    /**
+     * El getter de clase
+     * @return clase
+     */
     public Clases getClase() {
         return clase;
     }
-
+    /**
+     * El setter de la clase
+     * @param clase
+     */
     public void setClase(Clases clase) {
         this.clase = clase;
     }
-
+    /**
+     * El getter de la vida
+     * @return La vida
+     */
     public int getVida() {
         return vida;
     }
-
+    /**
+     * El setter de la vida
+     * @param vida
+     */
     public void setVida(int vida) {
         this.vida = vida;
 
     }
-
+    /**
+     * El getter de la defensa
+     * @return La defensa
+     */
     public int getDefensa() {
         return defensa;
     }
-
+    /**
+     * EL setter de la defensa
+     * @param defensa
+     */
     public void setDefensa(int defensa) {
         this.defensa = defensa;
     }
-
+    /**
+     * El getter del ataque
+     * @return El ataque
+     */
     public int getAtaque() {
         return ataque;
     }
-
+    /**
+     * El setter del ataque
+     * @param ataque
+     */
     public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
-
+    /**
+     * El getter de la velocidad
+     * @return La velocidad
+     */
     public int getVelocidad() {
         return velocidad;
     }
-
+    /**
+     * Setter de la velocidad
+     * @param velocidad
+     */
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
 
+    /**
+     * El método toString
+     * @return
+     */
     @Override
     public String toString() {
         return "Pokemon{" +

@@ -15,12 +15,18 @@ import java.util.List;
  *
  * @author Pablo Polo, Marcos Manzano Y Daniel Ocaña
  * @version 1.0
- * @date 24/04/2023
+ * @since 24/04/2023
  */
 public class PokemonDAOImp implements PokemonDAO {
     /*public final static String CONEXION = "jdbc:mysql://192.168.1.164/pokeapi?user=admin00&password=alumno";*/
+    /**
+     * Atributo conexión para la base de datos
+     */
     private Connection connection;
 
+    /**
+     * El constructor que crea la base de datos si no existe y la tabla si no existe.
+     */
     public PokemonDAOImp() {
 
         try {
@@ -53,6 +59,10 @@ public class PokemonDAOImp implements PokemonDAO {
 
     }
 
+    /**
+     * Método para la creación de la tabla donde se van a guardar los pokemons
+     */
+
     private void crearTablaPokeapi() {
 
         try (Statement statement = connection.createStatement()) {
@@ -68,6 +78,13 @@ public class PokemonDAOImp implements PokemonDAO {
         }
     }
 
+    /**
+     * Método para añadir los pokemons a la base de datos
+     * Se le pasa un pokemon con todos los datos y después se añade a la base de datos
+     * Puede dar una excepción si el pokemon ya existe
+     * @param pokemon
+     * @throws PokemonRepeatedException
+     */
 
     @Override
     public void crear(Pokemon pokemon) throws PokemonRepeatedException {
@@ -85,6 +102,12 @@ public class PokemonDAOImp implements PokemonDAO {
 
     }
 
+    /**
+     * Método para leer un pokemon por nombre y devolver los datos del pokemon
+     * @param nombrePokemon
+     * @return un pokemon entero con todos sus datos
+     * @throws PokemonNotFoundException
+     */
 
     @Override
     public Pokemon leerPorNombre(String nombrePokemon) throws PokemonNotFoundException {
@@ -115,6 +138,10 @@ public class PokemonDAOImp implements PokemonDAO {
         return pokemon;
     }
 
+    /**
+     * Método para leer todos los pokemons
+     * @return todos los pokemons de la base de datos
+     */
     @Override
     public List<Pokemon> leerTodos() {
         List<Pokemon> pokemones = new ArrayList<>();
@@ -148,6 +175,12 @@ public class PokemonDAOImp implements PokemonDAO {
         return pokemones;
     }
 
+    /**
+     * Método para mostrar todos los pokemons de una clase pasada como parámetro
+     * @param clase
+     * @return todos los pokemons de una clase en concreto
+     * @throws RuntimeException
+     */
 
     public List<Pokemon> leerPorClase(String clase) throws RuntimeException {
         List<Pokemon> pokemones = new ArrayList<>();
@@ -173,6 +206,12 @@ public class PokemonDAOImp implements PokemonDAO {
         /*pokemones.add()*/
         return pokemones;
     }
+
+    /**
+     * Método para actualizar un pokemon
+     * @param pokemon
+     * @throws PokemonNotFoundException
+     */
 
     @Override
     public void actualizar(Pokemon pokemon) throws PokemonNotFoundException {
@@ -202,6 +241,11 @@ public class PokemonDAOImp implements PokemonDAO {
         }
     }
 
+    /**
+     * Método para eliminar un pokemon
+     * @param nombre
+     * @throws PokemonNotFoundException
+     */
     @Override
     public void eliminarPorNombre(String nombre) throws PokemonNotFoundException {
         int contadorFilas = 0;
