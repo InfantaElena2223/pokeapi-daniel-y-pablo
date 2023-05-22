@@ -99,7 +99,6 @@ public class PokemonDAOImp implements PokemonDAO {
             throw new PokemonRepeatedException("El pokémon ya existe");
             /*System.err.println("El pokémon ya existe");*/
         }
-
     }
 
     /**

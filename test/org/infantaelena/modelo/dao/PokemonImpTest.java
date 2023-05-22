@@ -5,7 +5,10 @@ import org.infantaelena.excepciones.PokemonRepeatedException;
 import org.infantaelena.modelo.entidades.Pokemon;
 import org.opentest4j.AssertionFailedError;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PokemonImpTest {
 
@@ -29,6 +32,7 @@ class PokemonImpTest {
     }
 
     @org.junit.jupiter.api.Test
+        /*Para poder ejecutar este test, primero hay que consultar que exista la carpeta "data"*/
     void leerPorNombre() {
         PokemonDAOImp modelo = new PokemonDAOImp();
     }
