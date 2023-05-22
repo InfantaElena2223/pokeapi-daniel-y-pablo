@@ -5,13 +5,13 @@ import org.infantaelena.excepciones.PokemonRepeatedException;
 import org.infantaelena.modelo.entidades.Pokemon;
 import org.opentest4j.AssertionFailedError;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PokemonImpTest {
-
 
     @org.junit.jupiter.api.Test
         /*Para poder ejecutar este test, primero hay eliminar la base de datos borrando la carpeta "data"*/

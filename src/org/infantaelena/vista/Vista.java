@@ -18,7 +18,7 @@ public class Vista extends JFrame {
     /**
      * Atributo textoClase
      */
-    private JTextField textoClase;
+    private JComboBox textoClase;
     /**
      * Atributo del botón para añadir
      */
