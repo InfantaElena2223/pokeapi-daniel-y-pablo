@@ -27,10 +27,14 @@ public class PokemonDAOImp implements PokemonDAO {
     /**
      * El constructor que crea la base de datos si no existe y la tabla si no existe.
      */
-    public PokemonDAOImp() {
+
+    public PokemonDAOImp( ) {
+        this("pokeapi");
+    }
+    public PokemonDAOImp(String nombreBD) {
 
         try {
-            connection = DriverManager.getConnection("jdbc:h2:./data/pokeapi", "sa", "");
+            connection = DriverManager.getConnection("jdbc:h2:./data/"+nombreBD, "sa", "");
 
         } catch (SQLException e) {
             System.err.println("Error al hacer operaciones con la base de datos");

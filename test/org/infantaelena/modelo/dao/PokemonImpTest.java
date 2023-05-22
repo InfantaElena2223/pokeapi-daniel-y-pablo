@@ -16,7 +16,8 @@ class PokemonImpTest {
     @org.junit.jupiter.api.Test
         /*Para poder ejecutar este test, primero hay eliminar la base de datos borrando la carpeta "data"*/
     void crear() {
-        PokemonDAOImp modelo = new PokemonDAOImp();
+
+        PokemonDAOImp modelo = new PokemonDAOImp("pruebas");
         try {
             modelo.crear(new Pokemon("DIGLETT", Pokemon.Clases.TIERRA, 1, 2, 3, 4));
             modelo.crear(new Pokemon("CHAMANDER", Pokemon.Clases.FUEGO, 5, 10, 24, 27));
@@ -28,12 +29,15 @@ class PokemonImpTest {
             System.out.println("Prueba a borrar la base de datos");
             throw new AssertionFailedError();
         }
+
+        File fichero = new File("data/pruebas.mv.db");
+        fichero.delete();
     }
 
     @org.junit.jupiter.api.Test
         /*Para poder ejecutar este test, primero hay que consultar que exista la carpeta "data"*/
     void leerPorNombre() {
-        PokemonDAOImp modelo = new PokemonDAOImp();
+        PokemonDAOImp modelo = new PokemonDAOImp("pruebasLlena");
         try {
             Pokemon poke = modelo.leerPorNombre("DIGLETT");
             assertEquals("DIGLETT", poke.getNombre());
@@ -46,7 +50,7 @@ class PokemonImpTest {
     @org.junit.jupiter.api.Test
     void leerTodos() {
 
-        PokemonDAOImp modelo = new PokemonDAOImp();
+        PokemonDAOImp modelo = new PokemonDAOImp("pruebasLLena");
         List<Pokemon> pokemones = new ArrayList<>();
         pokemones = modelo.leerTodos();
 
@@ -57,14 +61,14 @@ class PokemonImpTest {
         if (pokemones.size() == 0) {
             System.err.println("No hay ningún pokémon");
         } else {
-            assertEquals("DIGLETT\nCHAMANDER\nSQUIRTLE\nNOIVERN\n", texto);
+            assertEquals("CHAMANDER\nSQUIRTLE\nNOIVERN\nDIGLETT\n", texto);
         }
     }
 
 
     @org.junit.jupiter.api.Test
     void actualizar() {
-        PokemonDAOImp modelo = new PokemonDAOImp();
+        PokemonDAOImp modelo = new PokemonDAOImp("pruebasLlena");
         Pokemon pokemon = new Pokemon("DIGLETT", Pokemon.Clases.TIERRA, 10, 20, 30, 40);
         try {
             modelo.actualizar(pokemon);
@@ -86,14 +90,17 @@ class PokemonImpTest {
 
     @org.junit.jupiter.api.Test
     void eliminarPorNombre() {
-        PokemonDAOImp modelo = new PokemonDAOImp();
+        PokemonDAOImp modelo = new PokemonDAOImp("PruebasLlena");
         String nombre = "DIGLETT";
         try {
             modelo.eliminarPorNombre(nombre);
             //Si llega hasta aquí, es que se ha encontrado el pokémon y se ha eliminado correctamente.
+            modelo.crear(new Pokemon("DIGLETT", Pokemon.Clases.TIERRA, 1, 2, 3, 4));
         } catch (PokemonNotFoundException e) {
             System.err.println("No se ha encontrado el pokémon");
             throw new AssertionFailedError();
+        } catch (PokemonRepeatedException e) {
+            System.err.println("No se ha hecho la operación correctamente");
         }
     }
 }

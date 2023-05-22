@@ -1,5 +1,7 @@
 package org.infantaelena.vista;
 
+import org.infantaelena.modelo.entidades.Pokemon;
+
 import javax.swing.*;
 
 /**
@@ -92,6 +94,7 @@ public class Vista extends JFrame {
     private JTextField textoVelocidad;
 
 
+
     /**
      * El constructor de la vista que abre la ventana.
      */
@@ -100,6 +103,9 @@ public class Vista extends JFrame {
         setContentPane(panelPrincipal);
         setSize(500, 500);
         setVisible(true);
+
+        textoClase.setModel(new DefaultComboBoxModel<>(Pokemon.Clases.values()));
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -141,7 +147,7 @@ public class Vista extends JFrame {
      * El getter del texto de la clase
      * @return El texto
      */
-    public JTextField getTextoClase() {
+    public JComboBox getTextoClase() {
         return textoClase;
     }
 
@@ -220,5 +226,11 @@ public class Vista extends JFrame {
      */
     public JButton getBotonSeleccionar() {
         return botonSeleccionar;
+    }
+
+
+
+    public void setTextoClase(JComboBox textoClase) {
+        this.textoClase = textoClase;
     }
 }
