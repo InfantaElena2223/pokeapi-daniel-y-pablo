@@ -48,15 +48,6 @@ public class PokemonDAOImp implements PokemonDAO {
 
             ResultSet resultSet = statement.executeQuery(selectAll);
 
-            while (resultSet.next()) {
-                String nombre = resultSet.getString("nombre");
-                String clase = resultSet.getString("clase");
-                int vida = resultSet.getInt("vida");
-                int defensa = resultSet.getInt("defensa");
-                int ataque = resultSet.getInt("ataque");
-                int velocidad = resultSet.getInt("velocidad");
-                System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad);
-            }
         } catch (SQLException e) {
             System.err.println("Error al realizar la consulta");
         }
