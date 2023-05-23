@@ -1,7 +1,5 @@
 package org.infantaelena.vista;
 
-import org.infantaelena.modelo.entidades.Pokemon;
-
 import javax.swing.*;
 
 /**
@@ -17,10 +15,7 @@ public class Vista extends JFrame {
      * Atributo textoNombre
      */
     private JTextField textoNombre;
-    /**
-     * Atributo textoClase
-     */
-    private JComboBox textoClase;
+
     /**
      * Atributo del botón para añadir
      */
@@ -92,7 +87,10 @@ public class Vista extends JFrame {
      * Atributo textoVelocidad
      */
     private JTextField textoVelocidad;
-
+    /**
+     * Atributo textoClase
+     */
+    private JTextField textoClase;
 
 
     /**
@@ -103,9 +101,6 @@ public class Vista extends JFrame {
         setContentPane(panelPrincipal);
         setSize(500, 500);
         setVisible(true);
-
-        textoClase.setModel(new DefaultComboBoxModel<>(Pokemon.Clases.values()));
-
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -143,13 +138,7 @@ public class Vista extends JFrame {
         return textoNombre;
     }
 
-    /**
-     * El getter del texto de la clase
-     * @return El texto
-     */
-    public JComboBox getTextoClase() {
-        return textoClase;
-    }
+
 
     /**
      * El getter del botón para añadir pokémons
@@ -229,8 +218,11 @@ public class Vista extends JFrame {
     }
 
 
+    public JTextField getTextoClase() {
+        return textoClase;
+    }
 
-    public void setTextoClase(JComboBox textoClase) {
+    public void setTextoClase(JTextField textoClase) {
         this.textoClase = textoClase;
     }
 }

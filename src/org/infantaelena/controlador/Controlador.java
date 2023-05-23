@@ -76,7 +76,7 @@ public class Controlador {
             String nombre = vista.getTextoNombre().getText().trim().toUpperCase();
             Pokemon pokemon = modelo.leerPorNombre(nombre);
                 vista.getTextoNombre().setText(pokemon.getNombre());
-                vista.getTextoClase().setSelectedItem(String.valueOf(pokemon.getClase()));
+                vista.getTextoClase().setText(String.valueOf(pokemon.getClase()));
                 vista.getTextoVida().setText(String.valueOf(pokemon.getVida()));
                 vista.getTextoDefensa().setText(String.valueOf(pokemon.getDefensa()));
                 vista.getTextoAtaque().setText(String.valueOf(pokemon.getAtaque()));
@@ -94,7 +94,7 @@ public class Controlador {
     private void mostrarPokemons() {
         boolean claseValida = false;
         List<Pokemon> pokemones = new ArrayList<>();
-        String textoClase = String.valueOf(vista.getTextoClase().getSelectedItem()).toUpperCase();
+        String textoClase = String.valueOf(vista.getTextoClase().getText()).toUpperCase();
         if (textoClase.equals("AIRE") || textoClase.equals("FUEGO")
                 || textoClase.equals("TIERRA") || textoClase.equals("AGUA")) {
             claseValida = true;
@@ -115,7 +115,7 @@ public class Controlador {
             texto += pokemon.getNombre() + "\n";
         }
         if (pokemones.size() == 0 && claseValida) {
-            vista.mostrarVentanaError("No hay ningún pokémon");
+            vista.mostrarVentana("No hay ningún pokémon");
         } else {
             vista.getTextArea1().setText(texto);
         }
@@ -163,7 +163,7 @@ public class Controlador {
      */
     public void establecerValoresPorDefecto() {
         vista.getTextoNombre().setText("");
-        vista.getTextoClase().setSelectedItem("SIN_CLASE");
+        vista.getTextoClase().setText("");
         vista.getTextoVida().setText("0");
         vista.getTextoDefensa().setText("0");
         vista.getTextoAtaque().setText("0");
@@ -179,7 +179,7 @@ public class Controlador {
         String nombre = vista.getTextoNombre().getText().trim().toUpperCase();
         Pokemon.Clases clase;
         try {
-            clase = (Pokemon.Clases) vista.getTextoClase().getSelectedItem();
+            clase = Pokemon.Clases.valueOf(vista.getTextoClase().getText().toUpperCase());
         } catch (IllegalArgumentException e) {
             vista.mostrarVentanaError("La clase introducida no es válida");
             vista.mostrarVentana("Elige entre: FUEGO, TIERRA, AIRE, AGUA, SIN_CLASE");
