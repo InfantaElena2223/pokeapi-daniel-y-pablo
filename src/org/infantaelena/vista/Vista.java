@@ -121,6 +121,21 @@ public class Vista extends JFrame {
         JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
+    /**
+     * Método para preguntar si queremos eliminar el pokémon seleccionado
+     * @param nombre El nombre del pokémon
+     * @return El texto de confirmaión
+     */
+    public String confirmacion(String nombre) {
+        String confirmacion = "";
+
+            confirmacion = JOptionPane.showInputDialog("Escribe ok para confirmar la eliminación del pokémon " + nombre);
+
+
+        return confirmacion;
+    }
+
+
 
     /**
      * El getter del área grande

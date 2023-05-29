@@ -6,6 +6,7 @@ import org.infantaelena.modelo.dao.PokemonDAOImp;
 import org.infantaelena.modelo.entidades.Pokemon;
 import org.infantaelena.vista.Vista;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,8 +52,8 @@ public class Controlador {
      */
     private void guardar() {
 
-        Pokemon pokemon=convertirDatosInterfazAPokemon();
-        if (pokemon!=null){
+        Pokemon pokemon = convertirDatosInterfazAPokemon();
+        if (pokemon != null) {
             try {
                 modelo.crear(pokemon);
                 //Si llega hasta aquí no habrá ocurrido ninguna excepción (comprobaciones hechas en el modelo)
@@ -68,19 +69,19 @@ public class Controlador {
 
     /**
      * Método que coge el campo de la clase, se conecta con la base de datos, y establece cada campo de la interfaz con sus valores correspondientes,
-     *  si no lo encuentra, saltará un mensaje de error.
+     * si no lo encuentra, saltará un mensaje de error.
      */
     public void seleccionar() {
 
         try {
             String nombre = vista.getTextoNombre().getText().trim().toUpperCase();
             Pokemon pokemon = modelo.leerPorNombre(nombre);
-                vista.getTextoNombre().setText(pokemon.getNombre());
-                vista.getTextoClase().setText(String.valueOf(pokemon.getClase()));
-                vista.getTextoVida().setText(String.valueOf(pokemon.getVida()));
-                vista.getTextoDefensa().setText(String.valueOf(pokemon.getDefensa()));
-                vista.getTextoAtaque().setText(String.valueOf(pokemon.getAtaque()));
-                vista.getTextoVelocidad().setText(String.valueOf(pokemon.getVelocidad()));
+            vista.getTextoNombre().setText(pokemon.getNombre());
+            vista.getTextoClase().setText(String.valueOf(pokemon.getClase()));
+            vista.getTextoVida().setText(String.valueOf(pokemon.getVida()));
+            vista.getTextoDefensa().setText(String.valueOf(pokemon.getDefensa()));
+            vista.getTextoAtaque().setText(String.valueOf(pokemon.getAtaque()));
+            vista.getTextoVelocidad().setText(String.valueOf(pokemon.getVelocidad()));
 
         } catch (PokemonNotFoundException e) {
             vista.mostrarVentanaError("No se ha encontrado el Pokemon");
@@ -111,8 +112,11 @@ public class Controlador {
             vista.mostrarVentana("Elige entre: FUEGO, TIERRA, AIRE, AGUA, SIN_CLASE o deja el campo vacío para mostrar todos");
         }
         String texto = "";
+        if (claseValida) {
+           texto = "Nombre\tClase\n\n";
+        }
         for (Pokemon pokemon : pokemones) {
-            texto += pokemon.getNombre() + "\n";
+            texto += pokemon.getNombre() + "\t" + pokemon.getClase() + "\n";
         }
         if (pokemones.size() == 0 && claseValida) {
             vista.mostrarVentana("No hay ningún pokémon");
@@ -127,10 +131,20 @@ public class Controlador {
     public void eliminar() {
         try {
             String nombre = vista.getTextoNombre().getText().trim().toUpperCase();
-            modelo.eliminarPorNombre(nombre);
-            //Si llega hasta aquí se ha eliminado el pokémon
-            vista.mostrarVentana("Se ha eliminado correctamente");
-            establecerValoresPorDefecto();
+            modelo.leerPorNombre(nombre);
+            String confirmacion = vista.confirmacion(nombre);
+            try {
+                if (confirmacion.equalsIgnoreCase("ok")) {
+                    modelo.eliminarPorNombre(nombre);
+                    //Si llega hasta aquí se ha eliminado el pokémon
+                    vista.mostrarVentana("Se ha eliminado correctamente");
+                    establecerValoresPorDefecto();
+                } else {
+                    vista.mostrarVentana("No se ha eliminado");
+                }
+            } catch (NullPointerException e) {
+
+            }
         } catch (PokemonNotFoundException e) {
             vista.mostrarVentanaError("No se ha encontrado el Pokemon");
         }
@@ -143,11 +157,11 @@ public class Controlador {
     public void actualizar() {
 
         Pokemon pokemon = convertirDatosInterfazAPokemon();
-        if (pokemon!=null){
+        if (pokemon != null) {
             try {
                 modelo.actualizar(pokemon);
                 vista.mostrarVentana("Pokemon " + pokemon.getNombre() + " actualizado con éxito");
-               establecerValoresPorDefecto();
+                establecerValoresPorDefecto();
             } catch (PokemonNotFoundException e) {
                 vista.mostrarVentanaError("El pokemon no se encuentra");
 
@@ -173,6 +187,7 @@ public class Controlador {
 
     /**
      * Método que verifica que los datos de los campos son correctos, y si los son creará un objeto Pokemon con todos ellos
+     *
      * @return El pokemon con los datos o null si ha habido un problema.
      */
     public Pokemon convertirDatosInterfazAPokemon() {
