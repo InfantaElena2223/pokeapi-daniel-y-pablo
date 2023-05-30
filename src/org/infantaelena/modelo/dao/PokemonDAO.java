@@ -7,12 +7,11 @@ import org.infantaelena.modelo.entidades.Pokemon;
 import java.util.List;
 
 /**
- *
  * Interfaz que define los métodos de acceso a datos de la clase Pokemon
+ *
  * @author Daniel Ocaña, Marcos Manzano y Pablo Polo
  * @version 1.0
  * @since 24/04/2023
- *
  */
 public interface PokemonDAO {
 
@@ -29,7 +28,7 @@ public interface PokemonDAO {
 
     // Método para leer todos los Pokemons
 
-    public List<Pokemon> leerTodos() ;
+    public List<Pokemon> leerTodos();
 
     // Método para actualizar un Pokemon en la base de datos
 

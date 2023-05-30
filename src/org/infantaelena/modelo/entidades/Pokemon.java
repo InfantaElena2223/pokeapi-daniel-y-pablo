@@ -47,6 +47,7 @@ public class Pokemon {
 
     /**
      * Constructor con todos los datos
+     *
      * @param nombre
      * @param clase
      * @param vida
@@ -65,6 +66,7 @@ public class Pokemon {
 
     /**
      * El getter del nombre
+     *
      * @return el nombre
      */
     public String getNombre() {
@@ -73,6 +75,7 @@ public class Pokemon {
 
     /**
      * EL setter del nombre
+     *
      * @param nombre
      */
 
@@ -82,70 +85,89 @@ public class Pokemon {
 
     /**
      * El getter de clase
+     *
      * @return clase
      */
     public Clases getClase() {
         return clase;
     }
+
     /**
      * El setter de la clase
+     *
      * @param clase
      */
     public void setClase(Clases clase) {
         this.clase = clase;
     }
+
     /**
      * El getter de la vida
+     *
      * @return La vida
      */
     public int getVida() {
         return vida;
     }
+
     /**
      * El setter de la vida
+     *
      * @param vida
      */
     public void setVida(int vida) {
         this.vida = vida;
 
     }
+
     /**
      * El getter de la defensa
+     *
      * @return La defensa
      */
     public int getDefensa() {
         return defensa;
     }
+
     /**
      * EL setter de la defensa
+     *
      * @param defensa
      */
     public void setDefensa(int defensa) {
         this.defensa = defensa;
     }
+
     /**
      * El getter del ataque
+     *
      * @return El ataque
      */
     public int getAtaque() {
         return ataque;
     }
+
     /**
      * El setter del ataque
+     *
      * @param ataque
      */
     public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
+
     /**
      * El getter de la velocidad
+     *
      * @return La velocidad
      */
     public int getVelocidad() {
         return velocidad;
     }
+
     /**
      * Setter de la velocidad
+     *
      * @param velocidad
      */
     public void setVelocidad(int velocidad) {
@@ -154,6 +176,7 @@ public class Pokemon {
 
     /**
      * El método toString
+     *
      * @return
      */
     @Override

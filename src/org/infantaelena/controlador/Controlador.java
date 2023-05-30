@@ -6,7 +6,6 @@ import org.infantaelena.modelo.dao.PokemonDAOImp;
 import org.infantaelena.modelo.entidades.Pokemon;
 import org.infantaelena.vista.Vista;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,7 +76,7 @@ public class Controlador {
             String nombre = vista.getTextoNombre().getText().trim().toUpperCase();
             Pokemon pokemon = modelo.leerPorNombre(nombre);
             vista.getTextoNombre().setText(pokemon.getNombre());
-            vista.getTextoClase2().setSelectedItem(pokemon.getClase());
+            vista.getTextoClase().setSelectedItem(pokemon.getClase());
             vista.getTextoVida().setText(String.valueOf(pokemon.getVida()));
             vista.getTextoDefensa().setText(String.valueOf(pokemon.getDefensa()));
             vista.getTextoAtaque().setText(String.valueOf(pokemon.getAtaque()));
@@ -95,7 +94,7 @@ public class Controlador {
     private void mostrarPokemons() {
         boolean claseValida = false;
         List<Pokemon> pokemones = new ArrayList<>();
-        Pokemon.Clases clase = (Pokemon.Clases) vista.getTextoClase2().getSelectedItem();
+        Pokemon.Clases clase = (Pokemon.Clases) vista.getTextoClase().getSelectedItem();
         if (clase != Pokemon.Clases.SIN_CLASE) {
             claseValida = true;
             try {
@@ -173,7 +172,7 @@ public class Controlador {
      */
     public void establecerValoresPorDefecto() {
         vista.getTextoNombre().setText("");
-        vista.getTextoClase2().setSelectedItem(Pokemon.Clases.SIN_CLASE);
+        vista.getTextoClase().setSelectedItem(Pokemon.Clases.SIN_CLASE);
         vista.getTextoVida().setText("0");
         vista.getTextoDefensa().setText("0");
         vista.getTextoAtaque().setText("0");
@@ -190,7 +189,7 @@ public class Controlador {
         String nombre = vista.getTextoNombre().getText().trim().toUpperCase();
         Pokemon.Clases clase;
         /*     try {*/
-        clase = (Pokemon.Clases) vista.getTextoClase2().getSelectedItem();
+        clase = (Pokemon.Clases) vista.getTextoClase().getSelectedItem();
        /* } catch (IllegalArgumentException e) {
             vista.mostrarVentanaError("La clase introducida no es válida");
             vista.mostrarVentana("Elige entre: FUEGO, TIERRA, AIRE, AGUA, SIN_CLASE");
@@ -211,7 +210,7 @@ public class Controlador {
             /*  vista2.mostrarVentana("Has introducido mal los datos. Solo puedes meter números");*/
         }
 
-        if (nombre.isEmpty() || (clase== Pokemon.Clases.SIN_CLASE) || (vida < 0 || vida > 50) || (ataque < 0 || ataque > 50) || (defensa < 0 || defensa > 50) || (velocidad < 0 || velocidad > 50)) {
+        if (nombre.isEmpty() || (clase == Pokemon.Clases.SIN_CLASE) || (vida < 0 || vida > 50) || (ataque < 0 || ataque > 50) || (defensa < 0 || defensa > 50) || (velocidad < 0 || velocidad > 50)) {
             vista.mostrarVentanaError("Has introducido mal los datos, no puede haber campos vacíos, tiene que tener una clase y los valores numéricos " +
                     "tienen que estar entre 0 y 50");
         } else {

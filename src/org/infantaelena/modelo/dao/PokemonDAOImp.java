@@ -28,13 +28,14 @@ public class PokemonDAOImp implements PokemonDAO {
      * El constructor que crea la base de datos si no existe y la tabla si no existe.
      */
 
-    public PokemonDAOImp( ) {
+    public PokemonDAOImp() {
         this("pokeapi");
     }
+
     public PokemonDAOImp(String nombreBD) {
 
         try {
-            connection = DriverManager.getConnection("jdbc:h2:./data/"+nombreBD, "sa", "");
+            connection = DriverManager.getConnection("jdbc:h2:./data/" + nombreBD, "sa", "");
 
         } catch (SQLException e) {
             System.err.println("Error al hacer operaciones con la base de datos");
@@ -77,6 +78,7 @@ public class PokemonDAOImp implements PokemonDAO {
      * Método para añadir los pokemons a la base de datos
      * Se le pasa un pokemon con todos los datos y después se añade a la base de datos
      * Puede dar una excepción si el pokemon ya existe
+     *
      * @param pokemon
      * @throws PokemonRepeatedException
      */
@@ -98,6 +100,7 @@ public class PokemonDAOImp implements PokemonDAO {
 
     /**
      * Método para leer un pokemon por nombre y devolver los datos del pokemon
+     *
      * @param nombrePokemon
      * @return un pokemon entero con todos sus datos
      * @throws PokemonNotFoundException
@@ -134,6 +137,7 @@ public class PokemonDAOImp implements PokemonDAO {
 
     /**
      * Método para leer todos los pokemons
+     *
      * @return todos los pokemons de la base de datos
      */
     @Override
@@ -171,6 +175,7 @@ public class PokemonDAOImp implements PokemonDAO {
 
     /**
      * Método para mostrar todos los pokemons de una clase pasada como parámetro
+     *
      * @param clase
      * @return todos los pokemons de una clase en concreto
      * @throws RuntimeException
@@ -203,6 +208,7 @@ public class PokemonDAOImp implements PokemonDAO {
 
     /**
      * Método para actualizar un pokemon
+     *
      * @param pokemon
      * @throws PokemonNotFoundException
      */
@@ -237,6 +243,7 @@ public class PokemonDAOImp implements PokemonDAO {
 
     /**
      * Método para eliminar un pokemon
+     *
      * @param nombre
      * @throws PokemonNotFoundException
      */

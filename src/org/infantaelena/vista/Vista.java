@@ -92,8 +92,7 @@ public class Vista extends JFrame {
     /**
      * Atributo textoClase
      */
-
-    private JComboBox textoClase2;
+    private JComboBox textoClase;
 
 
     /**
@@ -105,11 +104,12 @@ public class Vista extends JFrame {
         setSize(500, 500);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTextoClase2(this.textoClase2);
+        setTextoClase(this.textoClase);
     }
 
     /**
      * Función para mostrar una ventana con información
+     *
      * @param mensaje La información que se quiere comunicar
      */
     public void mostrarVentana(String mensaje) {
@@ -118,6 +118,7 @@ public class Vista extends JFrame {
 
     /**
      * Función para mostrar un mensaje de error.
+     *
      * @param mensaje El mensaje de error.
      */
     public void mostrarVentanaError(String mensaje) {
@@ -127,22 +128,23 @@ public class Vista extends JFrame {
 
     /**
      * Método para preguntar si queremos eliminar el pokémon seleccionado
+     *
      * @param nombre El nombre del pokémon
      * @return El texto de confirmaión
      */
     public String confirmacion(String nombre) {
         String confirmacion = "";
 
-            confirmacion = JOptionPane.showInputDialog("Escribe ok para confirmar la eliminación del pokémon " + nombre);
+        confirmacion = JOptionPane.showInputDialog("Escribe ok para confirmar la eliminación del pokémon " + nombre);
 
 
         return confirmacion;
     }
 
 
-
     /**
      * El getter del área grande
+     *
      * @return El texto
      */
     public JTextArea getTextArea1() {
@@ -151,6 +153,7 @@ public class Vista extends JFrame {
 
     /**
      * El getter del campo del nombre
+     *
      * @return El texto
      */
     public JTextField getTextoNombre() {
@@ -158,9 +161,9 @@ public class Vista extends JFrame {
     }
 
 
-
     /**
      * El getter del botón para añadir pokémons
+     *
      * @return
      */
     public JButton getBotonAniadir() {
@@ -169,7 +172,8 @@ public class Vista extends JFrame {
 
 
     /**
-     *  El getter del botón para mostrar los pokémons
+     * El getter del botón para mostrar los pokémons
+     *
      * @return
      */
     public JButton getBotonMostrar() {
@@ -178,6 +182,7 @@ public class Vista extends JFrame {
 
     /**
      * El getter del botón para actualizar los pokemons
+     *
      * @return
      */
 
@@ -188,6 +193,7 @@ public class Vista extends JFrame {
 
     /**
      * El getter del botón para eliminar
+     *
      * @return
      */
     public JButton getBotonEliminar() {
@@ -197,6 +203,7 @@ public class Vista extends JFrame {
 
     /**
      * El getter del texto de la vida
+     *
      * @return El texto
      */
     public JTextField getTextoVida() {
@@ -205,6 +212,7 @@ public class Vista extends JFrame {
 
     /**
      * El getter del texto de la defensa.
+     *
      * @return El texto
      */
     public JTextField getTextoDefensa() {
@@ -213,6 +221,7 @@ public class Vista extends JFrame {
 
     /**
      * El getter del texto del ataque
+     *
      * @return El texto
      */
     public JTextField getTextoAtaque() {
@@ -222,6 +231,7 @@ public class Vista extends JFrame {
 
     /**
      * El getter del texto de la velocidad
+     *
      * @return El texto
      */
     public JTextField getTextoVelocidad() {
@@ -230,20 +240,30 @@ public class Vista extends JFrame {
 
     /**
      * El getter del botón de seleccionar
+     *
      * @return
      */
     public JButton getBotonSeleccionar() {
         return botonSeleccionar;
     }
 
+    /**
+     * El getter del texto de la clase
+     *
+     * @return
+     */
 
-
-    public JComboBox getTextoClase2() {
-        return textoClase2;
+    public JComboBox getTextoClase() {
+        return textoClase;
     }
 
-    public void setTextoClase2(JComboBox textoClase2) {
-        textoClase2.setModel(new DefaultComboBoxModel<>(Pokemon.Clases.values()));
-        this.textoClase2 = textoClase2;
+    /**
+     * El setter del texto de la clase
+     *
+     * @param textoClase
+     */
+    public void setTextoClase(JComboBox textoClase) {
+        textoClase.setModel(new DefaultComboBoxModel<>(Pokemon.Clases.values()));
+        this.textoClase = textoClase;
     }
 }
