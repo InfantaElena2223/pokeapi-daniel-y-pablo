@@ -1,5 +1,7 @@
 package org.infantaelena.vista;
 
+import org.infantaelena.modelo.entidades.Pokemon;
+
 import javax.swing.*;
 
 /**
@@ -90,7 +92,8 @@ public class Vista extends JFrame {
     /**
      * Atributo textoClase
      */
-    private JTextField textoClase;
+
+    private JComboBox textoClase2;
 
 
     /**
@@ -102,6 +105,7 @@ public class Vista extends JFrame {
         setSize(500, 500);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTextoClase2(this.textoClase2);
     }
 
     /**
@@ -233,11 +237,13 @@ public class Vista extends JFrame {
     }
 
 
-    public JTextField getTextoClase() {
-        return textoClase;
+
+    public JComboBox getTextoClase2() {
+        return textoClase2;
     }
 
-    public void setTextoClase(JTextField textoClase) {
-        this.textoClase = textoClase;
+    public void setTextoClase2(JComboBox textoClase2) {
+        textoClase2.setModel(new DefaultComboBoxModel<>(Pokemon.Clases.values()));
+        this.textoClase2 = textoClase2;
     }
 }

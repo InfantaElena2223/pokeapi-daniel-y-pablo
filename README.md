@@ -4,7 +4,7 @@
 Daniel Ocaña , Marcos Manzano, Pablo Polo
 
 ## IDE
-IntelliJ
+IntelliJ Idea
 
 ## Versión JDK
 Versión JDK 11

@@ -77,7 +77,7 @@ public class Controlador {
             String nombre = vista.getTextoNombre().getText().trim().toUpperCase();
             Pokemon pokemon = modelo.leerPorNombre(nombre);
             vista.getTextoNombre().setText(pokemon.getNombre());
-            vista.getTextoClase().setText(String.valueOf(pokemon.getClase()));
+            vista.getTextoClase2().setSelectedItem(pokemon.getClase());
             vista.getTextoVida().setText(String.valueOf(pokemon.getVida()));
             vista.getTextoDefensa().setText(String.valueOf(pokemon.getDefensa()));
             vista.getTextoAtaque().setText(String.valueOf(pokemon.getAtaque()));
@@ -95,25 +95,21 @@ public class Controlador {
     private void mostrarPokemons() {
         boolean claseValida = false;
         List<Pokemon> pokemones = new ArrayList<>();
-        String textoClase = String.valueOf(vista.getTextoClase().getText()).toUpperCase();
-        if (textoClase.equals("AIRE") || textoClase.equals("FUEGO")
-                || textoClase.equals("TIERRA") || textoClase.equals("AGUA")) {
+        Pokemon.Clases clase = (Pokemon.Clases) vista.getTextoClase2().getSelectedItem();
+        if (clase != Pokemon.Clases.SIN_CLASE) {
             claseValida = true;
             try {
-                pokemones = modelo.leerPorClase(textoClase);
+                pokemones = modelo.leerPorClase(String.valueOf(clase));
             } catch (RuntimeException e) {
                 vista.mostrarVentanaError("Error al realizar la consulta");
             }
-        } else if (textoClase.equals("")) {
+        } else if (clase.equals(Pokemon.Clases.SIN_CLASE)) {
             claseValida = true;
             pokemones = modelo.leerTodos();
-        } else {
-            vista.mostrarVentanaError("No has puesto una clase válida");
-            vista.mostrarVentana("Elige entre: FUEGO, TIERRA, AIRE, AGUA, SIN_CLASE o deja el campo vacío para mostrar todos");
         }
         String texto = "";
         if (claseValida) {
-           texto = "Nombre\tClase\n\n";
+            texto = "Nombre\tClase\n\n";
         }
         for (Pokemon pokemon : pokemones) {
             texto += pokemon.getNombre() + "\t" + pokemon.getClase() + "\n";
@@ -177,7 +173,7 @@ public class Controlador {
      */
     public void establecerValoresPorDefecto() {
         vista.getTextoNombre().setText("");
-        vista.getTextoClase().setText("");
+        vista.getTextoClase2().setSelectedItem(Pokemon.Clases.SIN_CLASE);
         vista.getTextoVida().setText("0");
         vista.getTextoDefensa().setText("0");
         vista.getTextoAtaque().setText("0");
@@ -193,13 +189,13 @@ public class Controlador {
     public Pokemon convertirDatosInterfazAPokemon() {
         String nombre = vista.getTextoNombre().getText().trim().toUpperCase();
         Pokemon.Clases clase;
-        try {
-            clase = Pokemon.Clases.valueOf(vista.getTextoClase().getText().toUpperCase());
-        } catch (IllegalArgumentException e) {
+        /*     try {*/
+        clase = (Pokemon.Clases) vista.getTextoClase2().getSelectedItem();
+       /* } catch (IllegalArgumentException e) {
             vista.mostrarVentanaError("La clase introducida no es válida");
             vista.mostrarVentana("Elige entre: FUEGO, TIERRA, AIRE, AGUA, SIN_CLASE");
             return null;
-        }
+        }*/
         int vida = -1;
         int ataque = -1;
         int defensa = -1;
@@ -215,8 +211,8 @@ public class Controlador {
             /*  vista2.mostrarVentana("Has introducido mal los datos. Solo puedes meter números");*/
         }
 
-        if (nombre.isEmpty() || (vida < 0 || vida > 50) || (ataque < 0 || ataque > 50) || (defensa < 0 || defensa > 50) || (velocidad < 0 || velocidad > 50)) {
-            vista.mostrarVentanaError("Has introducido mal los datos, no puede haber campos vacíos, y los valores numéricos " +
+        if (nombre.isEmpty() || (clase== Pokemon.Clases.SIN_CLASE) || (vida < 0 || vida > 50) || (ataque < 0 || ataque > 50) || (defensa < 0 || defensa > 50) || (velocidad < 0 || velocidad > 50)) {
+            vista.mostrarVentanaError("Has introducido mal los datos, no puede haber campos vacíos, tiene que tener una clase y los valores numéricos " +
                     "tienen que estar entre 0 y 50");
         } else {
             Pokemon pokemon = new Pokemon(nombre, clase, vida, ataque, defensa, velocidad);
