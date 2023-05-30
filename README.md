@@ -156,3 +156,6 @@ No debe cambiarla versión de JDK 11 ni el IDE (Intellij IDEA)
 La evaluación de la tarea se realizará mediante una rúbrica, que se aplicará únicamente si el material entregado cumple todos los requisitos arriba indicados, en caso contrario, la tarea será calificada como no apta.
 
 
+Una vez hecho se genera el jar en la carpeta de "out" y podemos moverlo a donde queramos
+
+![img_9.png](img_9.png)
