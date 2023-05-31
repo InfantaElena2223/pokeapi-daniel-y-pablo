@@ -8,6 +8,8 @@ package org.infantaelena.modelo.entidades;
  * @since 24/04/2023
  */
 public class Pokemon {
+    public static final int MAX_VALORES_NUMERICOS = 50;
+
     /**
      * Un enum para las clases
      */
@@ -56,8 +58,8 @@ public class Pokemon {
      * @param velocidad
      */
     public Pokemon(String nombre, Clases clase, int vida, int defensa, int ataque, int velocidad) {
-        this.nombre = nombre;
-        this.clase = clase;
+        setNombre(nombre);
+        setClase(clase);
         setVida(vida);
         setDefensa(defensa);
         setAtaque(ataque);
@@ -80,7 +82,13 @@ public class Pokemon {
      */
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (nombre == null) {
+            if (this.nombre == null) {
+                this.nombre = "";
+            }
+        } else {
+            this.nombre = nombre.trim().toUpperCase();
+        }
     }
 
     /**
@@ -171,7 +179,13 @@ public class Pokemon {
      * @param velocidad
      */
     public void setVelocidad(int velocidad) {
-        this.velocidad = velocidad;
+        if (velocidad < 0) {
+            this.velocidad = 0;
+        } else if(velocidad>MAX_VALORES_NUMERICOS){
+            this.velocidad = MAX_VALORES_NUMERICOS;
+        }else {
+            this.velocidad=velocidad;
+        }
     }
 
     /**
