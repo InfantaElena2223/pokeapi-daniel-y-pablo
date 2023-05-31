@@ -124,7 +124,13 @@ public class Pokemon {
      * @param vida
      */
     public void setVida(int vida) {
-        this.vida = vida;
+        if (vida < 0) {
+            this.vida = 0;
+        } else if (vida > MAX_VALORES_NUMERICOS) {
+            this.vida = MAX_VALORES_NUMERICOS;
+        } else {
+            this.vida = vida;
+        }
 
     }
 
@@ -143,7 +149,13 @@ public class Pokemon {
      * @param defensa
      */
     public void setDefensa(int defensa) {
-        this.defensa = defensa;
+        if (defensa < 0) {
+            this.defensa = 0;
+        } else if (defensa > MAX_VALORES_NUMERICOS) {
+            this.defensa = MAX_VALORES_NUMERICOS;
+        } else {
+            this.defensa = defensa;
+        }
     }
 
     /**
@@ -161,7 +173,13 @@ public class Pokemon {
      * @param ataque
      */
     public void setAtaque(int ataque) {
-        this.ataque = ataque;
+        if (ataque < 0) {
+            this.ataque = 0;
+        } else if (ataque > MAX_VALORES_NUMERICOS) {
+            this.ataque = MAX_VALORES_NUMERICOS;
+        } else {
+            this.ataque = ataque;
+        }
     }
 
     /**

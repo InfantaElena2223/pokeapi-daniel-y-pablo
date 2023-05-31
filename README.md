@@ -10,8 +10,7 @@ IntelliJ Idea
 Versión JDK 11
 
 ## Funcionamiento APP
-Aplicación creada para añadir, eliminar, modificar y seleccionar unos prokemons que decida un usuario
-<!--Mejorar la explicación sobre el funcionamiento de la app-->
+Aplicación creada para añadir, eliminar, modificar y seleccionar unos pokemons que decida un usuario
 
 ## Generar el ejecutable
 Se puede generar el ejecutable desde el propio IDE

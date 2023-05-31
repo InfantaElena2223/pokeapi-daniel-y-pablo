@@ -61,8 +61,6 @@ public class Controlador {
             } catch (PokemonRepeatedException e) {
                 vista.mostrarVentanaError("El pokemon ya existe");
             }
-
-
         }
     }
 

@@ -18,7 +18,7 @@ import java.util.List;
  * @since 24/04/2023
  */
 public class PokemonDAOImp implements PokemonDAO {
-    /*public final static String CONEXION = "jdbc:mysql://192.168.1.164/pokeapi?user=admin00&password=alumno";*/
+
     /**
      * Atributo conexión para la base de datos
      */
@@ -94,7 +94,7 @@ public class PokemonDAOImp implements PokemonDAO {
                     pokemon.getVida(), pokemon.getDefensa(), pokemon.getAtaque(), pokemon.getVelocidad()));
         } catch (SQLException e) {
             throw new PokemonRepeatedException("El pokémon ya existe");
-            /*System.err.println("El pokémon ya existe");*/
+
         }
     }
 
@@ -124,7 +124,6 @@ public class PokemonDAOImp implements PokemonDAO {
                 pokemon.setAtaque(resultSet.getInt("ataque"));
                 pokemon.setVelocidad(resultSet.getInt("velocidad"));
                 contadorFilas++;
-                //  System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad);
             }
         } catch (SQLException e) {
             throw new PokemonNotFoundException("Error al realizar la consulta: " + e.getMessage());
@@ -164,7 +163,7 @@ public class PokemonDAOImp implements PokemonDAO {
                 pokemin.setAtaque(ataque);
                 pokemin.setVelocidad(velocidad);
                 pokemones.add(pokemin);
-                /*System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad); */
+
             }
         } catch (SQLException e) {
             System.err.println("Error al realizar la consulta");
@@ -197,7 +196,7 @@ public class PokemonDAOImp implements PokemonDAO {
                 pokemon.setAtaque(resultSet.getInt("ataque"));
                 pokemon.setVelocidad(resultSet.getInt("velocidad"));
                 pokemones.add(pokemon);
-                //  System.out.println(nombre + "\t" + clase + "\t" + vida + "\t" + defensa + "\t" + ataque + "\t" + velocidad);
+
             }
         } catch (SQLException e) {
             throw new RuntimeException();
