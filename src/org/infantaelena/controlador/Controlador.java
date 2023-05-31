@@ -127,19 +127,14 @@ public class Controlador {
         try {
             String nombre = vista.getTextoNombre().getText().trim().toUpperCase();
             modelo.leerPorNombre(nombre);
-            String confirmacion = vista.confirmacion(nombre);
-            try {
-                if (confirmacion.equalsIgnoreCase("ok")) {
+            int confirmacion = vista.confirmacion();
+                if (confirmacion==0) {
                     modelo.eliminarPorNombre(nombre);
                     //Si llega hasta aquí se ha eliminado el pokémon
                     vista.mostrarVentana("Se ha eliminado correctamente");
                     establecerValoresPorDefecto();
-                } else {
-                    vista.mostrarVentana("No se ha eliminado");
                 }
-            } catch (NullPointerException e) {
 
-            }
         } catch (PokemonNotFoundException e) {
             vista.mostrarVentanaError("No se ha encontrado el Pokemon");
         }

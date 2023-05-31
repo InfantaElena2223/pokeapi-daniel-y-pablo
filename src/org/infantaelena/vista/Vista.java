@@ -129,13 +129,10 @@ public class Vista extends JFrame {
     /**
      * Método para preguntar si queremos eliminar el pokémon seleccionado
      *
-     * @param nombre El nombre del pokémon
      * @return El texto de confirmaión
      */
-    public String confirmacion(String nombre) {
-        String confirmacion = "";
-
-        confirmacion = JOptionPane.showInputDialog("Escribe ok para confirmar la eliminación del pokémon " + nombre);
+    public int confirmacion() {
+        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar el pokemon?", "Confirmación", JOptionPane.YES_NO_OPTION);
 
 
         return confirmacion;

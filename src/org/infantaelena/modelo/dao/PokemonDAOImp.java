@@ -202,7 +202,7 @@ public class PokemonDAOImp implements PokemonDAO {
         } catch (SQLException e) {
             throw new RuntimeException();
         }
-        /*pokemones.add()*/
+
         return pokemones;
     }
 
@@ -267,8 +267,6 @@ public class PokemonDAOImp implements PokemonDAO {
                 String deletePokemon = "DELETE FROM pokeapi where nombre='" + nombre + "';";
                 statement.executeUpdate(deletePokemon);
             }
-
-            /*           ResultSet resultSet = null;*/
 
         } catch (SQLException e) {
             throw new PokemonNotFoundException("No se ha encontrado el pokémon");
